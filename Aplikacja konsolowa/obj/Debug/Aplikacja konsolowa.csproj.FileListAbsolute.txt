@@ -5,3 +5,10 @@ C:\Users\Scooon\Documents\Kursy\C#\Aplikacja konsolowa\obj\Debug\Aplikacja konso
 C:\Users\Scooon\Documents\Kursy\C#\Aplikacja konsolowa\obj\Debug\Aplikacja konsolowa.csproj.CoreCompileInputs.cache
 C:\Users\Scooon\Documents\Kursy\C#\Aplikacja konsolowa\obj\Debug\Aplikacja konsolowa.exe
 C:\Users\Scooon\Documents\Kursy\C#\Aplikacja konsolowa\obj\Debug\Aplikacja konsolowa.pdb
+C:\Users\Scooon\Documents\Kursy\C#\Kurs-CSharp-Podstawy-aplikacji-konsolowej\Aplikacja konsolowa\bin\Debug\Aplikacja konsolowa.exe.config
+C:\Users\Scooon\Documents\Kursy\C#\Kurs-CSharp-Podstawy-aplikacji-konsolowej\Aplikacja konsolowa\bin\Debug\Aplikacja konsolowa.exe
+C:\Users\Scooon\Documents\Kursy\C#\Kurs-CSharp-Podstawy-aplikacji-konsolowej\Aplikacja konsolowa\bin\Debug\Aplikacja konsolowa.pdb
+C:\Users\Scooon\Documents\Kursy\C#\Kurs-CSharp-Podstawy-aplikacji-konsolowej\Aplikacja konsolowa\obj\Debug\Aplikacja konsolowa.csprojAssemblyReference.cache
+C:\Users\Scooon\Documents\Kursy\C#\Kurs-CSharp-Podstawy-aplikacji-konsolowej\Aplikacja konsolowa\obj\Debug\Aplikacja konsolowa.csproj.CoreCompileInputs.cache
+C:\Users\Scooon\Documents\Kursy\C#\Kurs-CSharp-Podstawy-aplikacji-konsolowej\Aplikacja konsolowa\obj\Debug\Aplikacja konsolowa.exe
+C:\Users\Scooon\Documents\Kursy\C#\Kurs-CSharp-Podstawy-aplikacji-konsolowej\Aplikacja konsolowa\obj\Debug\Aplikacja konsolowa.pdb
