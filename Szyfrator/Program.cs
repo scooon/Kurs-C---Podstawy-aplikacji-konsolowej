@@ -8,19 +8,23 @@ namespace Szyfrator
 {
     class Program
     {
-        public static char[,] tablica = new char[,] 
-        {
-        {'a', '@' },
-        {'s', '$' },
-        {'i', '!' },
-        {'e', '3' }
-        
-        };
+
         static void Main(string[] args)
         {
+
+            char[,] tablica = new char[400, 2];
+
             
-            
-            
+            string klucz = "g\\]C'H{Mm>YBY!$nv]d\"qTv:.Q9V5 / x]pd9w7p(Pz3 < Y\"Jx8~k)AWzL'~h_(xUQzxV327.hk2kCng+VA''w8z{?;?FBM@"; // 93 characters to full security
+
+            for (int i = 0; i < klucz.Length; i++)
+            {
+                tablica[i, 0] = (char)(i+33);
+                tablica[i, 1] = klucz[i];
+
+
+            }
+
             Console.WriteLine("Podaj tekst");
             string tekst = Console.ReadLine();
 
@@ -33,7 +37,19 @@ namespace Szyfrator
 
             }
 
-            
+
+            Console.WriteLine("Zaszyfrowany tekst:");
+            Console.WriteLine(tekst);
+            Console.WriteLine("Odszyfrowany tekst:");
+
+            //Odszyfrowanie nie działa
+
+            for (int i = 0; i < tekst.Length; i++)
+            {
+ 
+                tekst = tekst.Replace(tablica[i, 1], tablica[i, 0]);
+
+            }
 
             Console.WriteLine(tekst);
 
