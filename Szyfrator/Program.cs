@@ -17,8 +17,8 @@ namespace Szyfrator
 
             //char[,] tablica = new char[400, 2];
 
-            
-            //string klucz = "$+8N7hvdLR@SI%y^gD3KBJPj9quC#G6kQfMFs*)z!x(Y2eVZc54brtanXpHWm&wU"; // 93 characters to full security
+            byte[] Klucz = Encoding.ASCII.GetBytes("+f<^,y[y;[tY3L/TxS:Dsas3eHB74xY_"); // Klucz AES
+
 
             /*for (int i = 0; i < klucz.Length; i++)
             {
@@ -35,10 +35,10 @@ namespace Szyfrator
             {
 
                 // Szyfrowanie
-                byte[] zaszyfrowane = EncryptStringToBytes_Aes(tekst, myAes.Key, myAes.IV);
+                byte[] zaszyfrowane = EncryptStringToBytes_Aes(tekst, Klucz, myAes.IV);
 
                 // Deszyfrowyanie
-                string odszyfrowane = DecryptStringFromBytes_Aes(zaszyfrowane, myAes.Key, myAes.IV);
+                string odszyfrowane = DecryptStringFromBytes_Aes(zaszyfrowane, Klucz, myAes.IV);
                 
                 
                 string zakodowane = System.Text.Encoding.UTF8.GetString(zaszyfrowane);

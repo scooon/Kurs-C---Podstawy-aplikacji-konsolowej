@@ -1,0 +1,10 @@
+C:\Users\Scooon\Documents\Kursy\C#\Kurs-CSharp-Podstawy-aplikacji-konsolowej\SzyfratorUI\bin\Debug\SzyfratorUI.exe.config
+C:\Users\Scooon\Documents\Kursy\C#\Kurs-CSharp-Podstawy-aplikacji-konsolowej\SzyfratorUI\bin\Debug\SzyfratorUI.exe
+C:\Users\Scooon\Documents\Kursy\C#\Kurs-CSharp-Podstawy-aplikacji-konsolowej\SzyfratorUI\bin\Debug\SzyfratorUI.pdb
+C:\Users\Scooon\Documents\Kursy\C#\Kurs-CSharp-Podstawy-aplikacji-konsolowej\SzyfratorUI\obj\Debug\SzyfratorUI.csprojAssemblyReference.cache
+C:\Users\Scooon\Documents\Kursy\C#\Kurs-CSharp-Podstawy-aplikacji-konsolowej\SzyfratorUI\obj\Debug\SzyfratorUI.Szyfrator.resources
+C:\Users\Scooon\Documents\Kursy\C#\Kurs-CSharp-Podstawy-aplikacji-konsolowej\SzyfratorUI\obj\Debug\SzyfratorUI.Properties.Resources.resources
+C:\Users\Scooon\Documents\Kursy\C#\Kurs-CSharp-Podstawy-aplikacji-konsolowej\SzyfratorUI\obj\Debug\SzyfratorUI.csproj.GenerateResource.cache
+C:\Users\Scooon\Documents\Kursy\C#\Kurs-CSharp-Podstawy-aplikacji-konsolowej\SzyfratorUI\obj\Debug\SzyfratorUI.csproj.CoreCompileInputs.cache
+C:\Users\Scooon\Documents\Kursy\C#\Kurs-CSharp-Podstawy-aplikacji-konsolowej\SzyfratorUI\obj\Debug\SzyfratorUI.exe
+C:\Users\Scooon\Documents\Kursy\C#\Kurs-CSharp-Podstawy-aplikacji-konsolowej\SzyfratorUI\obj\Debug\SzyfratorUI.pdb

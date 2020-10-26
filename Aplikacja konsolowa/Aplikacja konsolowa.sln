@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Aplikacja konsolowa", "Apli
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Szyfrator", "..\Szyfrator\Szyfrator.csproj", "{BDF695F6-3822-469A-951E-382B250BBF8E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SzyfratorUI", "..\SzyfratorUI\SzyfratorUI.csproj", "{00EE7458-53D1-4815-BC94-E8FDBAC0C578}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{BDF695F6-3822-469A-951E-382B250BBF8E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BDF695F6-3822-469A-951E-382B250BBF8E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BDF695F6-3822-469A-951E-382B250BBF8E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{00EE7458-53D1-4815-BC94-E8FDBAC0C578}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{00EE7458-53D1-4815-BC94-E8FDBAC0C578}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{00EE7458-53D1-4815-BC94-E8FDBAC0C578}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{00EE7458-53D1-4815-BC94-E8FDBAC0C578}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
