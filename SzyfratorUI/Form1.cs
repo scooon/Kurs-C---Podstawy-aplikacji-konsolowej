@@ -1,4 +1,5 @@
-﻿using System;
+﻿
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -24,7 +25,8 @@ namespace SzyfratorUI
 
         private void button1_Click(object sender, EventArgs e)
         {
-            MessageBoxButtons przyciski = MessageBoxButtons.YesNo;
+            
+            /*MessageBoxButtons przyciski = MessageBoxButtons.YesNo;
 
             for (int i = 0; i < 10; i++)
             {
@@ -34,9 +36,9 @@ namespace SzyfratorUI
                 {
                     this.Close();
                 }
-            }
+            }*/
 
-            
+
         }
     }
 }

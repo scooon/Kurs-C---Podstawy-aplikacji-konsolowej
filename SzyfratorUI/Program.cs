@@ -16,7 +16,8 @@ namespace SzyfratorUI
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Szyfrator());
+            //Application.Run(new Szyfrator());
+            Application.Run(new Password());
         }
     }
 }

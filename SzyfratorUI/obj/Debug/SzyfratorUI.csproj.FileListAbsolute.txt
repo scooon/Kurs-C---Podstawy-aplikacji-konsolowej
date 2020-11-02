@@ -8,3 +8,4 @@ C:\Users\Scooon\Documents\Kursy\C#\Kurs-CSharp-Podstawy-aplikacji-konsolowej\Szy
 C:\Users\Scooon\Documents\Kursy\C#\Kurs-CSharp-Podstawy-aplikacji-konsolowej\SzyfratorUI\obj\Debug\SzyfratorUI.csproj.CoreCompileInputs.cache
 C:\Users\Scooon\Documents\Kursy\C#\Kurs-CSharp-Podstawy-aplikacji-konsolowej\SzyfratorUI\obj\Debug\SzyfratorUI.exe
 C:\Users\Scooon\Documents\Kursy\C#\Kurs-CSharp-Podstawy-aplikacji-konsolowej\SzyfratorUI\obj\Debug\SzyfratorUI.pdb
+C:\Users\Scooon\Documents\Kursy\C#\Kurs-CSharp-Podstawy-aplikacji-konsolowej\SzyfratorUI\obj\Debug\SzyfratorUI.Password.resources
