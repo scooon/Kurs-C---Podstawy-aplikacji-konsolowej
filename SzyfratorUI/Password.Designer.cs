@@ -36,6 +36,7 @@
             // 
             // login
             // 
+            this.login.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.login.Location = new System.Drawing.Point(49, 78);
             this.login.Name = "login";
             this.login.Size = new System.Drawing.Size(120, 23);
@@ -56,16 +57,26 @@
             // 
             // PasswordBox
             // 
+            this.PasswordBox.AcceptsReturn = true;
+            this.PasswordBox.AccessibleRole = System.Windows.Forms.AccessibleRole.None;
+            this.PasswordBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.PasswordBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(60)))), ((int)(((byte)(60)))));
+            this.PasswordBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.PasswordBox.ForeColor = System.Drawing.Color.DarkOrange;
             this.PasswordBox.Location = new System.Drawing.Point(27, 43);
             this.PasswordBox.Name = "PasswordBox";
+            this.PasswordBox.PasswordChar = '*';
             this.PasswordBox.Size = new System.Drawing.Size(159, 20);
             this.PasswordBox.TabIndex = 2;
+            this.PasswordBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.PasswordBox.UseSystemPasswordChar = true;
             this.PasswordBox.TextChanged += new System.EventHandler(this.PasswordBox_TextChanged);
             // 
             // Password
             // 
+            this.AcceptButton = this.login;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
@@ -74,8 +85,11 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.login);
             this.ForeColor = System.Drawing.Color.DarkOrange;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
             this.Name = "Password";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Logowanie";
             this.ResumeLayout(false);
             this.PerformLayout();

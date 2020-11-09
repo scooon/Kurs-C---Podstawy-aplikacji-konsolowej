@@ -31,7 +31,7 @@ namespace SzyfratorUI
                 {
                     Szyfrator mainWindow = new Szyfrator();
                     mainWindow.Show();
-                    //this.Close();
+                    this.Hide();
                 }
 
             }
