@@ -55,7 +55,7 @@ namespace SzyfratorUI
                     }
                 }
             }
-            Content.Text = fileContent;
+            deszyfruj(fileContent);
             //MessageBox.Show(fileContent, "Zawartość pliku: " + filePath, MessageBoxButtons.OK);
 
 
@@ -106,12 +106,21 @@ namespace SzyfratorUI
                 // Szyfrowanie
                 byte[] zaszyfrowane = EncryptStringToBytes_Aes(Content.Text, Klucz, myAes.IV);
 
-                // Deszyfrowyanie
-                string odszyfrowane = DecryptStringFromBytes_Aes(zaszyfrowane, Klucz, myAes.IV);
-
+                
 
                 string zakodowane = System.Text.Encoding.UTF8.GetString(zaszyfrowane);
                 return zakodowane;
+            }
+        }
+
+        private void deszyfruj(string zakodowane)
+        {
+            using (Aes myAes = Aes.Create())
+            {
+                byte[] zaszyfrowane = System.Text.Encoding.UTF8.GetBytes(zakodowane);
+                // Deszyfrowyanie
+                string odszyfrowane = DecryptStringFromBytes_Aes(zaszyfrowane, Klucz, myAes.IV);
+                Content.Text = odszyfrowane;
             }
         }
 
