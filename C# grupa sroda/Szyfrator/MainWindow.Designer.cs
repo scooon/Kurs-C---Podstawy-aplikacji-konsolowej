@@ -33,6 +33,9 @@
             this.label1 = new System.Windows.Forms.Label();
             this.OpenButton = new System.Windows.Forms.Button();
             this.SaveButton = new System.Windows.Forms.Button();
+            this.tekst = new System.Windows.Forms.TextBox();
+            this.Szyfruj = new System.Windows.Forms.Button();
+            this.Odszyfruj = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // title
@@ -58,9 +61,10 @@
             // 
             // OpenButton
             // 
+            this.OpenButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.OpenButton.Location = new System.Drawing.Point(29, 85);
             this.OpenButton.Name = "OpenButton";
-            this.OpenButton.Size = new System.Drawing.Size(75, 23);
+            this.OpenButton.Size = new System.Drawing.Size(96, 39);
             this.OpenButton.TabIndex = 2;
             this.OpenButton.Text = "Otwórz";
             this.OpenButton.UseVisualStyleBackColor = true;
@@ -68,12 +72,45 @@
             // 
             // SaveButton
             // 
-            this.SaveButton.Location = new System.Drawing.Point(110, 85);
+            this.SaveButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.SaveButton.Location = new System.Drawing.Point(131, 85);
             this.SaveButton.Name = "SaveButton";
-            this.SaveButton.Size = new System.Drawing.Size(75, 23);
+            this.SaveButton.Size = new System.Drawing.Size(93, 39);
             this.SaveButton.TabIndex = 3;
             this.SaveButton.Text = "Zapisz";
             this.SaveButton.UseVisualStyleBackColor = true;
+            // 
+            // tekst
+            // 
+            this.tekst.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.tekst.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.tekst.ForeColor = System.Drawing.Color.DarkOrange;
+            this.tekst.Location = new System.Drawing.Point(249, 85);
+            this.tekst.Multiline = true;
+            this.tekst.Name = "tekst";
+            this.tekst.Size = new System.Drawing.Size(301, 249);
+            this.tekst.TabIndex = 4;
+            // 
+            // Szyfruj
+            // 
+            this.Szyfruj.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Szyfruj.Location = new System.Drawing.Point(29, 130);
+            this.Szyfruj.Name = "Szyfruj";
+            this.Szyfruj.Size = new System.Drawing.Size(96, 39);
+            this.Szyfruj.TabIndex = 5;
+            this.Szyfruj.Text = "Szyfruj";
+            this.Szyfruj.UseVisualStyleBackColor = true;
+            this.Szyfruj.Click += new System.EventHandler(this.Szyfruj_Click);
+            // 
+            // Odszyfruj
+            // 
+            this.Odszyfruj.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Odszyfruj.Location = new System.Drawing.Point(131, 130);
+            this.Odszyfruj.Name = "Odszyfruj";
+            this.Odszyfruj.Size = new System.Drawing.Size(93, 39);
+            this.Odszyfruj.TabIndex = 6;
+            this.Odszyfruj.Text = "Odszyfruj";
+            this.Odszyfruj.UseVisualStyleBackColor = true;
             // 
             // MainWindow
             // 
@@ -81,6 +118,9 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
             this.ClientSize = new System.Drawing.Size(584, 519);
+            this.Controls.Add(this.Odszyfruj);
+            this.Controls.Add(this.Szyfruj);
+            this.Controls.Add(this.tekst);
             this.Controls.Add(this.SaveButton);
             this.Controls.Add(this.OpenButton);
             this.Controls.Add(this.label1);
@@ -92,6 +132,7 @@
             this.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.Name = "MainWindow";
             this.Text = global::Szyfrator.Properties.Settings.Default.Szyfrator;
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.MainWindow_FormClosed);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -103,6 +144,9 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button OpenButton;
         private System.Windows.Forms.Button SaveButton;
+        private System.Windows.Forms.TextBox tekst;
+        private System.Windows.Forms.Button Szyfruj;
+        private System.Windows.Forms.Button Odszyfruj;
     }
 }
 

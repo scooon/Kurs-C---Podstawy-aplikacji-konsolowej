@@ -23,6 +23,8 @@ namespace Szyfrator
             if (passwordTextBox.Text == "test")
             {
                 Console.WriteLine("Zalogowano!");
+                new MainWindow().Show();
+                this.Hide();
             }
             else
             {

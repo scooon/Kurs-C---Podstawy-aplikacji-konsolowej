@@ -9,3 +9,14 @@ C:\Users\Scooon\Documents\Kursy\C#\C# grupa sroda\Szyfrator\obj\Debug\Szyfrator.
 C:\Users\Scooon\Documents\Kursy\C#\C# grupa sroda\Szyfrator\obj\Debug\Szyfrator.exe
 C:\Users\Scooon\Documents\Kursy\C#\C# grupa sroda\Szyfrator\obj\Debug\Szyfrator.pdb
 C:\Users\Scooon\Documents\Kursy\C#\C# grupa sroda\Szyfrator\obj\Debug\Szyfrator.PasswordBox.resources
+C:\Users\Scooon\Documents\Kursy\C#\Kurs-CSharp-Podstawy-aplikacji-konsolowej\C# grupa sroda\Szyfrator\bin\Debug\Szyfrator.exe.config
+C:\Users\Scooon\Documents\Kursy\C#\Kurs-CSharp-Podstawy-aplikacji-konsolowej\C# grupa sroda\Szyfrator\bin\Debug\Szyfrator.exe
+C:\Users\Scooon\Documents\Kursy\C#\Kurs-CSharp-Podstawy-aplikacji-konsolowej\C# grupa sroda\Szyfrator\bin\Debug\Szyfrator.pdb
+C:\Users\Scooon\Documents\Kursy\C#\Kurs-CSharp-Podstawy-aplikacji-konsolowej\C# grupa sroda\Szyfrator\obj\Debug\Szyfrator.csprojAssemblyReference.cache
+C:\Users\Scooon\Documents\Kursy\C#\Kurs-CSharp-Podstawy-aplikacji-konsolowej\C# grupa sroda\Szyfrator\obj\Debug\Szyfrator.MainWindow.resources
+C:\Users\Scooon\Documents\Kursy\C#\Kurs-CSharp-Podstawy-aplikacji-konsolowej\C# grupa sroda\Szyfrator\obj\Debug\Szyfrator.PasswordBox.resources
+C:\Users\Scooon\Documents\Kursy\C#\Kurs-CSharp-Podstawy-aplikacji-konsolowej\C# grupa sroda\Szyfrator\obj\Debug\Szyfrator.Properties.Resources.resources
+C:\Users\Scooon\Documents\Kursy\C#\Kurs-CSharp-Podstawy-aplikacji-konsolowej\C# grupa sroda\Szyfrator\obj\Debug\Szyfrator.csproj.GenerateResource.cache
+C:\Users\Scooon\Documents\Kursy\C#\Kurs-CSharp-Podstawy-aplikacji-konsolowej\C# grupa sroda\Szyfrator\obj\Debug\Szyfrator.csproj.CoreCompileInputs.cache
+C:\Users\Scooon\Documents\Kursy\C#\Kurs-CSharp-Podstawy-aplikacji-konsolowej\C# grupa sroda\Szyfrator\obj\Debug\Szyfrator.exe
+C:\Users\Scooon\Documents\Kursy\C#\Kurs-CSharp-Podstawy-aplikacji-konsolowej\C# grupa sroda\Szyfrator\obj\Debug\Szyfrator.pdb
