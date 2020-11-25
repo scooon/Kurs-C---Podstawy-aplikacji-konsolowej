@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Effortless.Net.Encryption;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -14,7 +15,9 @@ namespace Szyfrator
 {
     public partial class MainWindow : Form
     {
-        byte[] szyfr = System.Text.Encoding.UTF8.GetBytes("e7z%3?h#F4?}t3PrV~tVj'}PzKNrC,MW");
+        byte[] key = new byte[] { 17, 130, 130, 153, 33, 221, 125, 39, 153, 21, 70, 237, 221, 117, 119, 242, 67, 58, 49, 116, 182, 81, 134, 199, 214, 82, 99, 163, 47, 166, 137, 44 };
+        byte[] iv = new byte[] { 250, 2, 75, 71, 151, 241, 49, 69, 47, 80, 146, 192, 48, 133, 25, 62, 199, 75, 214, 1, 169, 209, 127, 190, 254, 239, 77, 151, 30, 255, 236, 63 };
+
 
         public MainWindow()
         {
@@ -38,103 +41,21 @@ namespace Szyfrator
 
         private void Szyfruj_Click(object sender, EventArgs e)
         {
-            using (Aes myAes = Aes.Create())
-            {
+            // Encrypting/decrypting strings
+            //byte[] key = Bytes.GenerateKey();
+            
+            
+            //byte[] iv = Bytes.GenerateIV();
+            
 
-                // Szyfrowanie
-                byte[] encrypted = EncryptStringToBytes_Aes(tekst.Text, szyfr, myAes.IV);
-                //string zaszyfrowane = System.Text.Encoding.UTF8.GetString(encrypted);
-                // Deszyfrowanie
-                string roundtrip = DecryptStringFromBytes_Aes(encrypted, szyfr, myAes.IV);
 
-                // Wyświetl tekst
-                Console.WriteLine("Tekst wpisany:   {0}", tekst.Text);
-                //Console.WriteLine("Tekst zaszyfrowany:   {0}", zaszyfrowane);
-                Console.WriteLine("Tekst rozszyfrowany: {0}", roundtrip);
-            }
+            string encrypted = Strings.Encrypt(tekst.Text, key, iv);
+            tekst.Text = encrypted;
+            string decrypted = Strings.Decrypt(encrypted, key, iv);
         }
 
-        static byte[] EncryptStringToBytes_Aes(string plainText, byte[] Key, byte[] IV)
-        {
-            // Check arguments.
-            if (plainText == null || plainText.Length <= 0)
-                throw new ArgumentNullException("plainText");
-            if (Key == null || Key.Length <= 0)
-                throw new ArgumentNullException("Key");
-            if (IV == null || IV.Length <= 0)
-                throw new ArgumentNullException("IV");
-            byte[] encrypted;
+        
 
-            // Create an Aes object
-            // with the specified key and IV.
-            using (Aes aesAlg = Aes.Create())
-            {
-                aesAlg.Key = Key;
-                aesAlg.IV = IV;
-
-                // Create an encryptor to perform the stream transform.
-                ICryptoTransform encryptor = aesAlg.CreateEncryptor(aesAlg.Key, aesAlg.IV);
-
-                // Create the streams used for encryption.
-                using (MemoryStream msEncrypt = new MemoryStream())
-                {
-                    using (CryptoStream csEncrypt = new CryptoStream(msEncrypt, encryptor, CryptoStreamMode.Write))
-                    {
-                        using (StreamWriter swEncrypt = new StreamWriter(csEncrypt))
-                        {
-                            //Write all data to the stream.
-                            swEncrypt.Write(plainText);
-                        }
-                        encrypted = msEncrypt.ToArray();
-                    }
-                }
-            }
-
-            // Return the encrypted bytes from the memory stream.
-            return encrypted;
-        }
-
-        static string DecryptStringFromBytes_Aes(byte[] cipherText, byte[] Key, byte[] IV)
-        {
-            // Check arguments.
-            if (cipherText == null || cipherText.Length <= 0)
-                throw new ArgumentNullException("cipherText");
-            if (Key == null || Key.Length <= 0)
-                throw new ArgumentNullException("Key");
-            if (IV == null || IV.Length <= 0)
-                throw new ArgumentNullException("IV");
-
-            // Declare the string used to hold
-            // the decrypted text.
-            string plaintext = null;
-
-            // Create an Aes object
-            // with the specified key and IV.
-            using (Aes aesAlg = Aes.Create())
-            {
-                aesAlg.Key = Key;
-                aesAlg.IV = IV;
-
-                // Create a decryptor to perform the stream transform.
-                ICryptoTransform decryptor = aesAlg.CreateDecryptor(aesAlg.Key, aesAlg.IV);
-
-                // Create the streams used for decryption.
-                using (MemoryStream msDecrypt = new MemoryStream(cipherText))
-                {
-                    using (CryptoStream csDecrypt = new CryptoStream(msDecrypt, decryptor, CryptoStreamMode.Read))
-                    {
-                        using (StreamReader srDecrypt = new StreamReader(csDecrypt))
-                        {
-
-                            // Read the decrypted bytes from the decrypting stream
-                            // and place them in a string.
-                            plaintext = srDecrypt.ReadToEnd();
-                        }
-                    }
-                }
-            }
-
-            return plaintext;
-        }
+        
     }
 }

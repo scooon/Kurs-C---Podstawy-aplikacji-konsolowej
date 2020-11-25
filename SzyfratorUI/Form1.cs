@@ -10,12 +10,14 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Security.Cryptography;
+using Effortless.Net.Encryption;
 
 namespace SzyfratorUI
 {
     public partial class Szyfrator : Form
     {
-        byte[] Klucz = Encoding.ASCII.GetBytes("+f<^,y[y;[tY3L/TxS:Dsas3eHB74xY_"); // Klucz AES
+        byte[] Klucz = Encoding.ASCII.GetBytes("jWnZr4u7x!z%C*F-"); // Klucz AES
+        byte[] buffer;
 
         public Szyfrator()
         {
@@ -29,8 +31,22 @@ namespace SzyfratorUI
 
         private void button1_Click(object sender, EventArgs e)
         {
+            //byte[] key = Bytes.GenerateKey();
+            byte[] key= new byte[] { 18, 1, 62, 248, 116, 173, 190, 231, 129, 217, 29, 198, 214, 198, 110, 37, 137, 10, 7, 10, 224, 107, 20, 147, 20, 17, 254, 231, 155, 38, 111, 6 };
+            byte[] iv = new byte[] { 251, 206, 128, 185, 18, 70, 175, 117, 81, 51, 116, 212, 182, 23, 144, 197, 95, 225, 96, 78, 148, 122, 191, 90, 95, 232, 52, 104, 203, 11, 146, 72 };
+            //byte[] iv = Bytes.GenerateIV();
+            for (int i = 0; i < 32; i++)
+            {
+                Console.Write(iv[i] + ",");
+            }
+            Console.WriteLine(key.Length);
+            Console.WriteLine(iv.Length);
+            string encrypted = Strings.Encrypt("Scooon", key, iv);
+            string decrypted = Strings.Decrypt("xxWq9yQeCJYgGXY+2zB0QfJ0LyrOoAz6ho0YV6VGFmQ=", key, iv);
+            Console.WriteLine(encrypted);
+            Console.WriteLine(decrypted);
 
-            string fileContent = string.Empty;
+            /*string fileContent = string.Empty;
             string filePath = string.Empty;
 
             using (OpenFileDialog openFileDialog = new OpenFileDialog())
@@ -49,13 +65,14 @@ namespace SzyfratorUI
 
                     var fileStream = openFileDialog.OpenFile();
 
-                    using (StreamReader reader = new StreamReader(fileStream))
+                    using (MemoryStream ms = new MemoryStream())
                     {
-                        fileContent = reader.ReadToEnd();
+                        fileStream.CopyTo(ms);
+                        deszyfruj(ms.ToArray());
                     }
                 }
             }
-            deszyfruj(fileContent);
+            */
             //MessageBox.Show(fileContent, "Zawartość pliku: " + filePath, MessageBoxButtons.OK);
 
 
@@ -74,9 +91,10 @@ namespace SzyfratorUI
         private void button2_Click(object sender, EventArgs e)
         {
 
-            string value = szyfruj();
-            byte[] buffer = System.Text.Encoding.UTF8.GetBytes(value);
+            buffer = szyfruj();
+            Console.Write(buffer);
 
+            /*
             Stream myStream;
 
             
@@ -95,10 +113,10 @@ namespace SzyfratorUI
                     myStream.Write(buffer, 0, buffer.Length);
                     myStream.Close();
                 }
-            }
+            } */
         }
 
-        private string szyfruj()
+        private byte[] szyfruj()
         {
             using (Aes myAes = Aes.Create())
             {
@@ -107,17 +125,15 @@ namespace SzyfratorUI
                 byte[] zaszyfrowane = EncryptStringToBytes_Aes(Content.Text, Klucz, myAes.IV);
 
                 
-
-                string zakodowane = System.Text.Encoding.UTF8.GetString(zaszyfrowane);
-                return zakodowane;
+                return zaszyfrowane;
             }
         }
 
-        private void deszyfruj(string zakodowane)
+        private void deszyfruj(byte[] zaszyfrowane)
         {
             using (Aes myAes = Aes.Create())
             {
-                byte[] zaszyfrowane = System.Text.Encoding.UTF8.GetBytes(zakodowane);
+                
                 // Deszyfrowyanie
                 string odszyfrowane = DecryptStringFromBytes_Aes(zaszyfrowane, Klucz, myAes.IV);
                 Content.Text = odszyfrowane;
