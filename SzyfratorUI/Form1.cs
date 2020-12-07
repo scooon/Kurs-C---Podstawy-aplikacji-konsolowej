@@ -31,16 +31,17 @@ namespace SzyfratorUI
 
         private void button1_Click(object sender, EventArgs e)
         {
-            //byte[] key = Bytes.GenerateKey();
-            byte[] key= new byte[] { 18, 1, 62, 248, 116, 173, 190, 231, 129, 217, 29, 198, 214, 198, 110, 37, 137, 10, 7, 10, 224, 107, 20, 147, 20, 17, 254, 231, 155, 38, 111, 6 };
-            byte[] iv = new byte[] { 251, 206, 128, 185, 18, 70, 175, 117, 81, 51, 116, 212, 182, 23, 144, 197, 95, 225, 96, 78, 148, 122, 191, 90, 95, 232, 52, 104, 203, 11, 146, 72 };
-            //byte[] iv = Bytes.GenerateIV();
+            byte[] key = Bytes.GenerateKey();
+            byte[] iv = Bytes.GenerateIV();
+            //byte[] key= new byte[] { 18, 1, 62, 248, 116, 173, 190, 231, 129, 217, 29, 198, 214, 198, 110, 37, 137, 10, 7, 10, 224, 107, 20, 147, 20, 17, 254, 231, 155, 38, 111, 6 };
+            //byte[] iv = new byte[] { 251, 206, 128, 185, 18, 70, 175, 117, 81, 51, 116, 212, 182, 23, 144, 197, 95, 225, 96, 78, 148, 122, 191, 90, 95, 232, 52, 104, 203, 11, 146, 72 };
+
             for (int i = 0; i < 32; i++)
             {
                 Console.Write(iv[i] + ",");
             }
-            Console.WriteLine(key.Length);
-            Console.WriteLine(iv.Length);
+    
+
             string encrypted = Strings.Encrypt("Scooon", key, iv);
             string decrypted = Strings.Decrypt("xxWq9yQeCJYgGXY+2zB0QfJ0LyrOoAz6ho0YV6VGFmQ=", key, iv);
             Console.WriteLine(encrypted);
