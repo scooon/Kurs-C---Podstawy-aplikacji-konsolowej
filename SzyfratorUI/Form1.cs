@@ -38,33 +38,39 @@ namespace SzyfratorUI
 
 
 
-
-            
-
-            using (OpenFileDialog openFileDialog = new OpenFileDialog())
+            try
             {
-                openFileDialog.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.Desktop); ;
-                openFileDialog.Filter = "Pliki Szyfratora (*.szyfrator)|*.szyfrator|Pliki tekstowe (*.txt)|*.txt|Wszystkie pliki (*.*)|*.*";
-                openFileDialog.FilterIndex = 1;
-                openFileDialog.Title = "Szyfrator - Otwórz plik";
-                openFileDialog.RestoreDirectory = true;
 
-                if (openFileDialog.ShowDialog() == DialogResult.OK)
+
+                using (OpenFileDialog openFileDialog = new OpenFileDialog())
                 {
+                    openFileDialog.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.Desktop); ;
+                    openFileDialog.Filter = "Pliki Szyfratora (*.szyfrator)|*.szyfrator|Pliki tekstowe (*.txt)|*.txt|Wszystkie pliki (*.*)|*.*";
+                    openFileDialog.FilterIndex = 1;
+                    openFileDialog.Title = "Szyfrator - Otwórz plik";
+                    openFileDialog.RestoreDirectory = true;
 
-                    //Get the path of specified file
-                    filePath = openFileDialog.FileName;
-
-                    //Read the contents of the file into a stream
-                    var fileStream = openFileDialog.OpenFile();
-
-                    using (StreamReader reader = new StreamReader(fileStream))
+                    if (openFileDialog.ShowDialog() == DialogResult.OK)
                     {
-                        fileContent = reader.ReadToEnd();
-                    }
 
-                    Content.Text = Strings.Decrypt(fileContent, key, iv);
+                        //Get the path of specified file
+                        filePath = openFileDialog.FileName;
+
+                        //Read the contents of the file into a stream
+                        var fileStream = openFileDialog.OpenFile();
+
+                        using (StreamReader reader = new StreamReader(fileStream))
+                        {
+                            fileContent = reader.ReadToEnd();
+                        }
+
+                        Content.Text = Strings.Decrypt(fileContent, key, iv);
+                    }
                 }
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Wybrany plik, nie jest plikiem programu Szyfrator!", "Niewłaściwy plik!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             
             
