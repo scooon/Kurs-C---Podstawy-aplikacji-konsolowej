@@ -34,8 +34,6 @@
             this.OpenButton = new System.Windows.Forms.Button();
             this.SaveButton = new System.Windows.Forms.Button();
             this.tekst = new System.Windows.Forms.TextBox();
-            this.Szyfruj = new System.Windows.Forms.Button();
-            this.Odszyfruj = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // title
@@ -92,35 +90,12 @@
             this.tekst.Size = new System.Drawing.Size(301, 249);
             this.tekst.TabIndex = 4;
             // 
-            // Szyfruj
-            // 
-            this.Szyfruj.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.Szyfruj.Location = new System.Drawing.Point(29, 130);
-            this.Szyfruj.Name = "Szyfruj";
-            this.Szyfruj.Size = new System.Drawing.Size(96, 39);
-            this.Szyfruj.TabIndex = 5;
-            this.Szyfruj.Text = "Szyfruj";
-            this.Szyfruj.UseVisualStyleBackColor = true;
-            this.Szyfruj.Click += new System.EventHandler(this.Szyfruj_Click);
-            // 
-            // Odszyfruj
-            // 
-            this.Odszyfruj.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.Odszyfruj.Location = new System.Drawing.Point(131, 130);
-            this.Odszyfruj.Name = "Odszyfruj";
-            this.Odszyfruj.Size = new System.Drawing.Size(93, 39);
-            this.Odszyfruj.TabIndex = 6;
-            this.Odszyfruj.Text = "Odszyfruj";
-            this.Odszyfruj.UseVisualStyleBackColor = true;
-            // 
             // MainWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
             this.ClientSize = new System.Drawing.Size(584, 519);
-            this.Controls.Add(this.Odszyfruj);
-            this.Controls.Add(this.Szyfruj);
             this.Controls.Add(this.tekst);
             this.Controls.Add(this.SaveButton);
             this.Controls.Add(this.OpenButton);
@@ -146,8 +121,6 @@
         private System.Windows.Forms.Button OpenButton;
         private System.Windows.Forms.Button SaveButton;
         private System.Windows.Forms.TextBox tekst;
-        private System.Windows.Forms.Button Szyfruj;
-        private System.Windows.Forms.Button Odszyfruj;
     }
 }
 

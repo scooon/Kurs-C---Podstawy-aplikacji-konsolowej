@@ -51,7 +51,7 @@ namespace Szyfrator
                     {
                         content = reader.ReadToEnd();
                     }
-                    tekst.Text = content;
+                    tekst.Text = deszyfruj(content);
 
                 }
             }
@@ -67,21 +67,22 @@ namespace Szyfrator
 
         private void SaveButton_Click(object sender, EventArgs e)
         {
-            // NIE DZIAŁA ZAPISYWANIE
-            byte[] byteArray = Encoding.UTF8.GetBytes(tekst.Text);
-            Stream myStream = new MemoryStream(byteArray);
-            //Stream myStream;
-            SaveFileDialog saveFileDialog1 = new SaveFileDialog();
+            
+            byte[] byteArray = Encoding.UTF8.GetBytes(szyfruj(tekst.Text));
+            
+            Stream myStream;
+            SaveFileDialog saveFileDialog = new SaveFileDialog();
 
-            saveFileDialog1.Filter = "txt files (*.txt)|*.txt|All files (*.*)|*.*";
-            saveFileDialog1.FilterIndex = 2;
-            saveFileDialog1.RestoreDirectory = true;
+            saveFileDialog.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+            saveFileDialog.Filter = "Pliki Szyfratora (*.szyfrator)|*.szyfrator|Pliki tekstowe (*.txt)|*.txt|Wszystkie pliki (*.*)|*.*";
+            saveFileDialog.FilterIndex = 1;
+            saveFileDialog.RestoreDirectory = true;
 
-            if (saveFileDialog1.ShowDialog() == DialogResult.OK)
+            if (saveFileDialog.ShowDialog() == DialogResult.OK)
             {
-                if ((myStream = saveFileDialog1.OpenFile()) != null)
+                if ((myStream = saveFileDialog.OpenFile()) != null)
                 {
-                
+                    myStream.Write(byteArray, 0, byteArray.Length);
                     myStream.Close();
                 }
             }
@@ -97,13 +98,37 @@ namespace Szyfrator
 
 
 
-            string encrypted = Strings.Encrypt(tekst.Text, key, iv);
-            tekst.Text = encrypted;
-            string decrypted = Strings.Decrypt(encrypted, key, iv);
+            
+            
         }
 
 
+        string deszyfruj(string zaszyfrowane)
+        {
+            try
+            {
+                return Strings.Decrypt(zaszyfrowane, key, iv);
+            }
+            catch(Exception)
+            {
+                MessageBox.Show("Błąd! To nie jest plik programu Szyfrator", "Szyfrator - Błąd!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return "Błąd! To nie jest plik programu Szyfrator";
+            }
+        }
 
+        string szyfruj(string odszyfrowane)
+        {
+            try
+            {
+                return Strings.Encrypt(odszyfrowane, key, iv);
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Błąd zapisu!", "Szyfrator - Błąd!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return "Błąd zapisu!";
+
+            }
+        }
 
     }
 }
