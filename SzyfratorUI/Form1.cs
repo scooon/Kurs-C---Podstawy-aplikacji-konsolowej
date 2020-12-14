@@ -11,6 +11,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Security.Cryptography;
 using Effortless.Net.Encryption;
+using Newtonsoft.Json;
 
 namespace SzyfratorUI
 {
@@ -20,6 +21,8 @@ namespace SzyfratorUI
         byte[] iv = new byte[] { 251, 206, 128, 185, 18, 70, 175, 117, 81, 51, 116, 212, 182, 23, 144, 197, 95, 225, 96, 78, 148, 122, 191, 90, 95, 232, 52, 104, 203, 11, 146, 72 };
         string fileContent = string.Empty;
         string filePath = string.Empty;
+
+       
 
         public Szyfrator()
         {
@@ -90,36 +93,47 @@ namespace SzyfratorUI
         private void button2_Click(object sender, EventArgs e)
         {
 
-            
 
-            
-            Stream myStream;
-
-            
-            SaveFileDialog saveFileDialog1 = new SaveFileDialog();
-
-            saveFileDialog1.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.Desktop); ;
-            saveFileDialog1.Filter = "Pliki Szyfratora (*.szyfrator)|*.szyfrator|Pliki tekstowe (*.txt)|*.txt|Wszystkie pliki (*.*)|*.*";
-            saveFileDialog1.FilterIndex = 1;
-            saveFileDialog1.Title = "Szyfrator - Zapisz plik";
-            saveFileDialog1.RestoreDirectory = true;
-
-            byte[] buffer = Encoding.UTF8.GetBytes(Strings.Encrypt(Content.Text, key, iv));
-
-            if (saveFileDialog1.ShowDialog() == DialogResult.OK)
+            try
             {
-                if ((myStream = saveFileDialog1.OpenFile()) != null)
+
+                Stream myStream;
+
+
+                SaveFileDialog saveFileDialog1 = new SaveFileDialog();
+
+                saveFileDialog1.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.Desktop); ;
+                saveFileDialog1.Filter = "Pliki Szyfratora (*.szyfrator)|*.szyfrator|Pliki tekstowe (*.txt)|*.txt|Wszystkie pliki (*.*)|*.*";
+                saveFileDialog1.FilterIndex = 1;
+                saveFileDialog1.Title = "Szyfrator - Zapisz plik";
+                saveFileDialog1.RestoreDirectory = true;
+
+                byte[] buffer = Encoding.UTF8.GetBytes(Strings.Encrypt(Content.Text, key, iv));
+
+                if (saveFileDialog1.ShowDialog() == DialogResult.OK)
                 {
-                    myStream.Write(buffer, 0, buffer.Length);
-                    myStream.Close();
+                    if ((myStream = saveFileDialog1.OpenFile()) != null)
+                    {
+                        myStream.Write(buffer, 0, buffer.Length);
+                        myStream.Close();
+                    }
                 }
-            } 
+            }
+            catch
+            {
+                MessageBox.Show("Problem z zapisem pliku!", "Błąd zapisu", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
-        
-
-
-
-        
+        private void button3_Click(object sender, EventArgs e)
+        {
+            string json = "[{'index':0,'name':'Nazwa','login':'Test','password':'5fd7a17eee119039335adb07','email':'Test@gmail.com','notes':'Jakieś notatki'},{'index':1,'name':'Nazwa','login':'Test','password':'5fd7a17eec845a3bba6cc10c','email':'Test@gmail.com','notes':'Jakieś notatki'},{ 'index':2,'name':'Nazwa','login':'Test','password':'5fd7a17e22ab30886f105c9f','email':'Test@gmail.com','notes':'Jakieś notatki'},{ 'index':3,'name':'Nazwa','login':'Test','password':'5fd7a17e0befe84e2a1739b1','email':'Test@gmail.com','notes':'Jakieś notatki'},{'index':4,'name':'Nazwa','login':'Test','password':'5fd7a17eaca98a53fa8cbbdf','email':'Test@gmail.com','notes':'Jakieś notatki'},{'index':5,'name':'Nazwa','login':'Test','password':'5fd7a17e04b2bc3004e66621','email':'Test@gmail.com','notes':'Jakieś notatki'}]";
+            List<Passwords> passwords = JsonConvert.DeserializeObject<List<Passwords>>(json);
+            for (int i = 0; i < passwords.Count; i++)
+            {
+                Console.WriteLine(passwords[i].index);
+            }
+            
+        }
     }
 }
