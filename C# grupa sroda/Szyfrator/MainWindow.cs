@@ -1,4 +1,5 @@
 ﻿using Effortless.Net.Encryption;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -19,6 +20,8 @@ namespace Szyfrator
         byte[] iv = new byte[] { 250, 2, 75, 71, 151, 241, 49, 69, 47, 80, 146, 192, 48, 133, 25, 62, 199, 75, 214, 1, 169, 209, 127, 190, 254, 239, 77, 151, 30, 255, 236, 63 };
 
         string content, path;
+
+        List<Password> passwords = new List<Password>();
 
         public MainWindow()
         {
@@ -67,8 +70,8 @@ namespace Szyfrator
 
         private void SaveButton_Click(object sender, EventArgs e)
         {
-            
-            byte[] byteArray = Encoding.UTF8.GetBytes(szyfruj(tekst.Text));
+            string json = JsonConvert.SerializeObject(passwords);
+            byte[] byteArray = Encoding.UTF8.GetBytes(szyfruj(json));
             
             Stream myStream;
             SaveFileDialog saveFileDialog = new SaveFileDialog();
@@ -114,6 +117,17 @@ namespace Szyfrator
                 MessageBox.Show("Błąd! To nie jest plik programu Szyfrator", "Szyfrator - Błąd!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return "Błąd! To nie jest plik programu Szyfrator";
             }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            string json = "[{'id':0,'name':'Nazwa','login':'Test','password':'5fda49edd6b82aabb37e2925','email':'Test@gmail.com','notes':'Jakieś notatki'},{'id':1,'name':'Nazwa','login':'Test','password':'5fda49eda7d62eb642d6d5ac','email':'Test@gmail.com','notes':'Jakieś notatki'},{'id':2,'name':'Nazwa','login':'Test','password':'5fda49eddefaac2371438b74','email':'Test@gmail.com','notes':'Jakieś notatki'},{'id':3,'name':'Nazwa','login':'Test','password':'5fda49edc16c2b741bcb0df5','email':'Test@gmail.com','notes':'Jakieś notatki'},{'id':4,'name':'Nazwa','login':'Test','password':'5fda49ed9d8b2e57be1dd37c','email':'Test@gmail.com','notes':'Jakieś notatki'},{'id':5,'name':'Nazwa','login':'Test','password':'5fda49edf1e39babf724fbe5','email':'Test@gmail.com','notes':'Jakieś notatki'}]";
+            //List<Password> passwords = JsonConvert.DeserializeObject<List<Password>>(json);
+            //Console.WriteLine(passwords[2].password);
+
+            string json2 = JsonConvert.SerializeObject(passwords);
+
+            //Console.WriteLine(json2);
         }
 
         string szyfruj(string odszyfrowane)
