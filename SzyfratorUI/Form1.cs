@@ -22,6 +22,9 @@ namespace SzyfratorUI
         string fileContent = string.Empty;
         string filePath = string.Empty;
         List<Passwords> passwords;
+        private Panel buttonPanel = new Panel();
+        private Button addNewRowButton = new Button();
+        private Button deleteRowButton = new Button();
 
 
 
@@ -136,56 +139,105 @@ namespace SzyfratorUI
 
             Console.WriteLine(jsonout);
 
-            listView.LabelEdit = true;
-            listView.AllowColumnReorder = true;
-            listView.GridLines = true;
-            listView.Sorting = SortOrder.Ascending;
+            SetupLayout();
+            SetupDataGridView();
 
-            // Create three items and three sets of subitems for each item.
-            ListViewItem item1 = new ListViewItem("item1", 0);
-            // Place a check mark next to the item.
-            item1.Checked = true;
-            item1.SubItems.Add("1");
-            item1.SubItems.Add("2");
-            item1.SubItems.Add("3");
-            ListViewItem item2 = new ListViewItem("item2", 1);
-            item2.SubItems.Add("4");
-            item2.SubItems.Add("5");
-            item2.SubItems.Add("6");
-            ListViewItem item3 = new ListViewItem("item3", 0);
-            // Place a check mark next to the item.
-            item3.Checked = true;
-            item3.SubItems.Add("7");
-            item3.SubItems.Add("8");
-            item3.SubItems.Add("9");
+        }
 
-            // Create columns for the items and subitems.
-            // Width of -2 indicates auto-size.
-            listView.Columns.Add("Item Column", -2, HorizontalAlignment.Left);
-            listView.Columns.Add("Column 2", -2, HorizontalAlignment.Left);
-            listView.Columns.Add("Column 3", -2, HorizontalAlignment.Left);
-            listView.Columns.Add("Column 4", -2, HorizontalAlignment.Center);
+        private void SetupLayout()
+        {
+            //this.Size = new Size(600, 500);
 
-            //Add the items to the ListView.
-            listView.Items.AddRange(new ListViewItem[] { item1, item2, item3 });
+            addNewRowButton.Text = "Dodaj hasło";
+            addNewRowButton.Location = new Point(10, 10);
+            addNewRowButton.Click += new EventHandler(addNewRowButton_Click);
 
-            // Create two ImageList objects.
-            ImageList imageListSmall = new ImageList();
-            ImageList imageListLarge = new ImageList();
+            deleteRowButton.Text = "Usuń hasło";
+            deleteRowButton.Location = new Point(100, 10);
+            deleteRowButton.Click += new EventHandler(deleteRowButton_Click);
 
-            // Initialize the ImageList objects with bitmaps.
-            /*imageListSmall.Images.Add(Bitmap.FromFile("C:\\MySmallImage1.bmp"));
-            imageListSmall.Images.Add(Bitmap.FromFile("C:\\MySmallImage2.bmp"));
-            imageListLarge.Images.Add(Bitmap.FromFile("C:\\MyLargeImage1.bmp"));
-            imageListLarge.Images.Add(Bitmap.FromFile("C:\\MyLargeImage2.bmp"));*/
+            buttonPanel.Controls.Add(addNewRowButton);
+            buttonPanel.Controls.Add(deleteRowButton);
+            buttonPanel.Height = 50;
+            buttonPanel.Dock = DockStyle.Bottom;
 
-            //Assign the ImageList objects to the ListView.
-            listView.LargeImageList = imageListLarge;
-            listView.SmallImageList = imageListSmall;
+            //this.Controls.Add(this.buttonPanel);
+            dataGridView1.Controls.Add(this.buttonPanel);
+        }
 
-            // Add the ListView to the control collection.
-            this.Controls.Add(listView);
+        private void addNewRowButton_Click(object sender, EventArgs e)
+        {
+            this.dataGridView1.Rows.Add();
+        }
 
+        private void deleteRowButton_Click(object sender, EventArgs e)
+        {
+            if (this.dataGridView1.SelectedRows.Count > 0 &&
+                this.dataGridView1.SelectedRows[0].Index !=
+                this.dataGridView1.Rows.Count - 1)
+            {
+                this.dataGridView1.Rows.RemoveAt(
+                    this.dataGridView1.SelectedRows[0].Index);
+            }
+        }
+
+
+        private void SetupDataGridView()
+        {
+            //this.Controls.Add(dataGridView1);
+
+            dataGridView1.ColumnCount = 5;
+
+            dataGridView1.Name = "dataGridView1";
+            //dataGridView1.Location = new Point(8, 8);
+            //dataGridView1.Size = new Size(500, 250);
+            dataGridView1.AutoSizeRowsMode =
+                DataGridViewAutoSizeRowsMode.DisplayedCellsExceptHeaders;
+            dataGridView1.ColumnHeadersBorderStyle =
+                DataGridViewHeaderBorderStyle.Single;
+            dataGridView1.CellBorderStyle = DataGridViewCellBorderStyle.Single;
+            dataGridView1.GridColor = Color.Black;
+            dataGridView1.RowHeadersVisible = false;
+
+            dataGridView1.Columns[0].Name = "Release Date";
+            dataGridView1.Columns[1].Name = "Track";
+            dataGridView1.Columns[2].Name = "Title";
+            dataGridView1.Columns[3].Name = "Artist";
+            dataGridView1.Columns[4].Name = "Album";
+            dataGridView1.Columns[4].DefaultCellStyle.Font =
+                new Font(dataGridView1.DefaultCellStyle.Font, FontStyle.Italic);
+
+            dataGridView1.SelectionMode =
+                DataGridViewSelectionMode.FullRowSelect;
+            dataGridView1.MultiSelect = false;
+            //dataGridView1.Dock = DockStyle.Fill;
+
+            dataGridView1.CellFormatting += new
+                DataGridViewCellFormattingEventHandler(dataGridView1_CellFormatting);
+        }
+
+        private void dataGridView1_CellFormatting(object sender,
+        System.Windows.Forms.DataGridViewCellFormattingEventArgs e)
+        {
+            if (e != null)
+            {
+                if (this.dataGridView1.Columns[e.ColumnIndex].Name == "Release Date")
+                {
+                    if (e.Value != null)
+                    {
+                        try
+                        {
+                            e.Value = DateTime.Parse(e.Value.ToString())
+                                .ToLongDateString();
+                            e.FormattingApplied = true;
+                        }
+                        catch (FormatException)
+                        {
+                            Console.WriteLine("{0} is not a valid date.", e.Value.ToString());
+                        }
+                    }
+                }
+            }
         }
     }
 }
