@@ -21,8 +21,10 @@ namespace SzyfratorUI
         byte[] iv = new byte[] { 251, 206, 128, 185, 18, 70, 175, 117, 81, 51, 116, 212, 182, 23, 144, 197, 95, 225, 96, 78, 148, 122, 191, 90, 95, 232, 52, 104, 203, 11, 146, 72 };
         string fileContent = string.Empty;
         string filePath = string.Empty;
+        List<Passwords> passwords;
 
-       
+
+
 
         public Szyfrator()
         {
@@ -128,12 +130,62 @@ namespace SzyfratorUI
         private void button3_Click(object sender, EventArgs e)
         {
             string json = "[{'index':0,'name':'Nazwa','login':'Test','password':'5fd7a17eee119039335adb07','email':'Test@gmail.com','notes':'Jakieś notatki'},{'index':1,'name':'Nazwa','login':'Test','password':'5fd7a17eec845a3bba6cc10c','email':'Test@gmail.com','notes':'Jakieś notatki'},{ 'index':2,'name':'Nazwa','login':'Test','password':'5fd7a17e22ab30886f105c9f','email':'Test@gmail.com','notes':'Jakieś notatki'},{ 'index':3,'name':'Nazwa','login':'Test','password':'5fd7a17e0befe84e2a1739b1','email':'Test@gmail.com','notes':'Jakieś notatki'},{'index':4,'name':'Nazwa','login':'Test','password':'5fd7a17eaca98a53fa8cbbdf','email':'Test@gmail.com','notes':'Jakieś notatki'},{'index':5,'name':'Nazwa','login':'Test','password':'5fd7a17e04b2bc3004e66621','email':'Test@gmail.com','notes':'Jakieś notatki'}]";
-            List<Passwords> passwords = JsonConvert.DeserializeObject<List<Passwords>>(json);
-            for (int i = 0; i < passwords.Count; i++)
-            {
-                Console.WriteLine(passwords[i].index);
-            }
-            
+            passwords = JsonConvert.DeserializeObject<List<Passwords>>(json);
+
+            string jsonout = JsonConvert.SerializeObject(passwords);
+
+            Console.WriteLine(jsonout);
+
+            listView.LabelEdit = true;
+            listView.AllowColumnReorder = true;
+            listView.GridLines = true;
+            listView.Sorting = SortOrder.Ascending;
+
+            // Create three items and three sets of subitems for each item.
+            ListViewItem item1 = new ListViewItem("item1", 0);
+            // Place a check mark next to the item.
+            item1.Checked = true;
+            item1.SubItems.Add("1");
+            item1.SubItems.Add("2");
+            item1.SubItems.Add("3");
+            ListViewItem item2 = new ListViewItem("item2", 1);
+            item2.SubItems.Add("4");
+            item2.SubItems.Add("5");
+            item2.SubItems.Add("6");
+            ListViewItem item3 = new ListViewItem("item3", 0);
+            // Place a check mark next to the item.
+            item3.Checked = true;
+            item3.SubItems.Add("7");
+            item3.SubItems.Add("8");
+            item3.SubItems.Add("9");
+
+            // Create columns for the items and subitems.
+            // Width of -2 indicates auto-size.
+            listView.Columns.Add("Item Column", -2, HorizontalAlignment.Left);
+            listView.Columns.Add("Column 2", -2, HorizontalAlignment.Left);
+            listView.Columns.Add("Column 3", -2, HorizontalAlignment.Left);
+            listView.Columns.Add("Column 4", -2, HorizontalAlignment.Center);
+
+            //Add the items to the ListView.
+            listView.Items.AddRange(new ListViewItem[] { item1, item2, item3 });
+
+            // Create two ImageList objects.
+            ImageList imageListSmall = new ImageList();
+            ImageList imageListLarge = new ImageList();
+
+            // Initialize the ImageList objects with bitmaps.
+            /*imageListSmall.Images.Add(Bitmap.FromFile("C:\\MySmallImage1.bmp"));
+            imageListSmall.Images.Add(Bitmap.FromFile("C:\\MySmallImage2.bmp"));
+            imageListLarge.Images.Add(Bitmap.FromFile("C:\\MyLargeImage1.bmp"));
+            imageListLarge.Images.Add(Bitmap.FromFile("C:\\MyLargeImage2.bmp"));*/
+
+            //Assign the ImageList objects to the ListView.
+            listView.LargeImageList = imageListLarge;
+            listView.SmallImageList = imageListSmall;
+
+            // Add the ListView to the control collection.
+            this.Controls.Add(listView);
+
         }
     }
 }

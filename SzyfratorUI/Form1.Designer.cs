@@ -35,6 +35,7 @@
             this.button2 = new System.Windows.Forms.Button();
             this.Content = new System.Windows.Forms.TextBox();
             this.button3 = new System.Windows.Forms.Button();
+            this.listView = new System.Windows.Forms.ListView();
             this.SuspendLayout();
             // 
             // label1
@@ -109,12 +110,23 @@
             this.button3.UseVisualStyleBackColor = true;
             this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
+            // listView
+            // 
+            this.listView.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
+            this.listView.HideSelection = false;
+            this.listView.Location = new System.Drawing.Point(196, 177);
+            this.listView.Name = "listView";
+            this.listView.Size = new System.Drawing.Size(188, 131);
+            this.listView.TabIndex = 6;
+            this.listView.UseCompatibleStateImageBehavior = false;
+            // 
             // Szyfrator
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
             this.ClientSize = new System.Drawing.Size(933, 519);
+            this.Controls.Add(this.listView);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.Content);
             this.Controls.Add(this.button2);
@@ -140,6 +152,7 @@
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.TextBox Content;
         private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.ListView listView;
     }
 }
 
