@@ -186,7 +186,7 @@ namespace SzyfratorUI
         {
             //this.Controls.Add(dataGridView1);
 
-            dataGridView1.ColumnCount = 6;
+            dataGridView1.ColumnCount = 7;
 
             dataGridView1.Name = "dataGridView1";
             //dataGridView1.Location = new Point(8, 8);
@@ -203,9 +203,14 @@ namespace SzyfratorUI
             dataGridView1.Columns[1].Name = "Usługa";
             dataGridView1.Columns[2].Name = "Login";
             dataGridView1.Columns[3].Name = "Hasło";
-            dataGridView1.Columns[4].Name = "E-mail";
-            dataGridView1.Columns[5].Name = "Notatki";
-            dataGridView1.Columns[4].DefaultCellStyle.Font =
+            dataGridView1.Columns[4].Name = "HiddenPwd";
+            dataGridView1.Columns[5].Name = "E-mail";
+            dataGridView1.Columns[6].Name = "Notatki";
+
+            dataGridView1.Columns[0].ReadOnly = true;
+            //dataGridView1.Columns[4].Visible = false;
+
+            dataGridView1.Columns[5].DefaultCellStyle.Font =
                 new Font(dataGridView1.DefaultCellStyle.Font, FontStyle.Italic);
 
             dataGridView1.SelectionMode =
@@ -220,21 +225,42 @@ namespace SzyfratorUI
         private void dataGridView1_CellFormatting(object sender,
         System.Windows.Forms.DataGridViewCellFormattingEventArgs e)
         {
+            
+        }
+
+        private void ShowPwd_Click(object sender, EventArgs e)
+        {
+            if (this.dataGridView1.SelectedRows.Count > 0 &&
+                this.dataGridView1.SelectedRows[0].Index !=
+                this.dataGridView1.Rows.Count - 1)
+            {
+                dataGridView1.Rows[this.dataGridView1.SelectedRows[0].Index].Cells[3].Value = this.dataGridView1.SelectedRows[0].Cells[4].Value.ToString();
+            }
+        }
+
+        private void dataGridView1_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            Console.WriteLine("Mouse Click");
+        }
+
+        private void dataGridView1_CellMouseLeave(object sender, System.Windows.Forms.DataGridViewCellEventArgs e)
+        {
+            Console.WriteLine("Mouse Leave");
             if (e != null)
             {
-                if (this.dataGridView1.Columns[e.ColumnIndex].Name == "Release Date")
+                if (this.dataGridView1.Columns[e.ColumnIndex].Name == "Hasło")
                 {
-                    if (e.Value != null)
+                    if (dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex].Value != null)
                     {
                         try
                         {
-                            e.Value = DateTime.Parse(e.Value.ToString())
-                                .ToLongDateString();
-                            e.FormattingApplied = true;
+                            dataGridView1.Rows[e.RowIndex].Tag = dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex].Value;
+                            dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex + 1].Value = dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex].Value;
+                            dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex].Value = new String('\u25CF', dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString().Length);
                         }
                         catch (FormatException)
                         {
-                            Console.WriteLine("{0} is not a valid date.", e.Value.ToString());
+                            Console.WriteLine("{0} password problem.", e.Value.ToString());
                         }
                     }
                 }
