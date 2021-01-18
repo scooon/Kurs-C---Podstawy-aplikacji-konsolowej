@@ -186,7 +186,7 @@ namespace SzyfratorUI
         {
             //this.Controls.Add(dataGridView1);
 
-            dataGridView1.ColumnCount = 5;
+            dataGridView1.ColumnCount = 6;
 
             dataGridView1.Name = "dataGridView1";
             //dataGridView1.Location = new Point(8, 8);
@@ -199,11 +199,12 @@ namespace SzyfratorUI
             dataGridView1.GridColor = Color.Black;
             dataGridView1.RowHeadersVisible = false;
 
-            dataGridView1.Columns[0].Name = "Release Date";
-            dataGridView1.Columns[1].Name = "Track";
-            dataGridView1.Columns[2].Name = "Title";
-            dataGridView1.Columns[3].Name = "Artist";
-            dataGridView1.Columns[4].Name = "Album";
+            dataGridView1.Columns[0].Name = "ID";
+            dataGridView1.Columns[1].Name = "Usługa";
+            dataGridView1.Columns[2].Name = "Login";
+            dataGridView1.Columns[3].Name = "Hasło";
+            dataGridView1.Columns[4].Name = "E-mail";
+            dataGridView1.Columns[5].Name = "Notatki";
             dataGridView1.Columns[4].DefaultCellStyle.Font =
                 new Font(dataGridView1.DefaultCellStyle.Font, FontStyle.Italic);
 
