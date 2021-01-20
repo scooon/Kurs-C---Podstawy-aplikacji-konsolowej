@@ -22,3 +22,5 @@ C:\Users\Scooon\Documents\Kursy\C#\Kurs-CSharp-Podstawy-aplikacji-konsolowej\C# 
 C:\Users\Scooon\Documents\Kursy\C#\Kurs-CSharp-Podstawy-aplikacji-konsolowej\C# grupa sroda\Szyfrator\obj\Debug\Szyfrator.pdb
 C:\Users\Scooon\Documents\Kursy\C#\Kurs-CSharp-Podstawy-aplikacji-konsolowej\C# grupa sroda\Szyfrator\bin\Debug\Effortless.Net.Encryption.dll
 C:\Users\Scooon\Documents\Kursy\C#\Kurs-CSharp-Podstawy-aplikacji-konsolowej\C# grupa sroda\Szyfrator\obj\Debug\Szyfrator.csproj.CopyComplete
+C:\Users\Scooon\Documents\Kursy\C#\Kurs-CSharp-Podstawy-aplikacji-konsolowej\C# grupa sroda\Szyfrator\bin\Debug\Newtonsoft.Json.dll
+C:\Users\Scooon\Documents\Kursy\C#\Kurs-CSharp-Podstawy-aplikacji-konsolowej\C# grupa sroda\Szyfrator\bin\Debug\Newtonsoft.Json.xml
