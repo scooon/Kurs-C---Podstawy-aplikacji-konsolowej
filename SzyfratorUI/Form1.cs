@@ -241,12 +241,7 @@ namespace SzyfratorUI
         private void dataGridView1_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
             Console.WriteLine("Mouse Click");
-        }
-
-        private void dataGridView1_CellMouseLeave(object sender, System.Windows.Forms.DataGridViewCellEventArgs e)
-        {
-            Console.WriteLine("Mouse Leave");
-            if (e != null)
+            if ((e != null) && (e.RowIndex != -1) && (dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex].Value != null))
             {
                 if (this.dataGridView1.Columns[e.ColumnIndex].Name == "Hasło")
                 {
@@ -254,13 +249,68 @@ namespace SzyfratorUI
                     {
                         try
                         {
-                            dataGridView1.Rows[e.RowIndex].Tag = dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex].Value;
-                            dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex + 1].Value = dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex].Value;
-                            dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex].Value = new String('\u25CF', dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString().Length);
+                            if (dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString().Contains('\u25CF'))
+                            { 
+                                dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex].Value = dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex + 1].Value;
+ 
+                            }
                         }
                         catch (FormatException)
                         {
-                            Console.WriteLine("{0} password problem.", e.Value.ToString());
+                            //Console.WriteLine("{0} password problem.", e.Value.ToString());
+                        }
+                    }
+                }
+            }
+        
+        }
+
+        private void dataGridView1_CellMouseLeave(object sender, System.Windows.Forms.DataGridViewCellEventArgs e)
+        {
+            Console.WriteLine("Mouse Leave");
+            if ((e != null) && (e.RowIndex != -1) && (dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex].Value != null))
+            {
+                if (this.dataGridView1.Columns[e.ColumnIndex].Name == "Hasło")
+                {
+                    if (dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex].Value != null)
+                    {
+                        try
+                        {
+                            if (!dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString().Contains('\u25CF'))
+                            {
+                                //dataGridView1.Rows[e.RowIndex].Tag = dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex].Value;
+                                dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex + 1].Value = dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex].Value;
+                                dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex].Value = new String('\u25CF', dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString().Length);
+                            }
+                        }
+                        catch (FormatException)
+                        {
+                            //Console.WriteLine("{0} password problem.", e.Value.ToString());
+                        }
+                    }
+                }
+            }
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if ((e != null) && (e.RowIndex != -1) && (dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex].Value != null))
+            {
+                if (this.dataGridView1.Columns[e.ColumnIndex].Name == "Hasło")
+                {
+                    if (dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex].Value != null)
+                    {
+                        try
+                        {
+                            if (dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString().Contains('\u25CF'))
+                            {
+                                dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex].Value = dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex + 1].Value;
+
+                            }
+                        }
+                        catch (FormatException)
+                        {
+                            //Console.WriteLine("{0} password problem.", e.Value.ToString());
                         }
                     }
                 }

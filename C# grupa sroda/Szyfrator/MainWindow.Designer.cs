@@ -118,6 +118,7 @@
             // 
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             this.passwordsDataGridView.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            this.passwordsDataGridView.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.passwordsDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.passwordsDataGridView.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
             this.passwordsDataGridView.BorderStyle = System.Windows.Forms.BorderStyle.None;
@@ -143,8 +144,8 @@
             this.Notes});
             dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Montserrat Light", 8.249999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(90)))), ((int)(((byte)(90)))));
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Montserrat Medium", 8.249999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.DarkOrange;
             dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
             dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(90)))), ((int)(((byte)(90)))));
             dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
@@ -154,9 +155,11 @@
             this.passwordsDataGridView.Location = new System.Drawing.Point(262, 65);
             this.passwordsDataGridView.Name = "passwordsDataGridView";
             this.passwordsDataGridView.RowHeadersVisible = false;
+            this.passwordsDataGridView.RowTemplate.DefaultCellStyle.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             this.passwordsDataGridView.Size = new System.Drawing.Size(655, 326);
             this.passwordsDataGridView.TabIndex = 6;
             this.passwordsDataGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.passwordsDataGridView_CellContentClick);
+            this.passwordsDataGridView.CellMouseUp += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.passwordsDataGridView_CellMouseUp);
             // 
             // ID
             // 
@@ -214,6 +217,7 @@
             this.ForeColor = System.Drawing.Color.DarkOrange;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            //this.Name = "MainWindow";
             this.Text = global::Szyfrator.Properties.Settings.Default.Szyfrator;
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.MainWindow_FormClosed);
             ((System.ComponentModel.ISupportInitialize)(this.passwordsDataGridView)).EndInit();

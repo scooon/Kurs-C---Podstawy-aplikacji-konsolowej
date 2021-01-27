@@ -229,14 +229,6 @@ namespace Szyfrator
             
             passwordsDataGridView.RowHeadersVisible = false;
 
-            /*passwordsDataGridView.Columns[0].Name = "Release Date";
-            passwordsDataGridView.Columns[1].Name = "Track";
-            passwordsDataGridView.Columns[2].Name = "Title";
-            passwordsDataGridView.Columns[3].Name = "Artist";
-            passwordsDataGridView.Columns[4].Name = "Album";
-            passwordsDataGridView.Columns[4].DefaultCellStyle.Font =
-                new Font(passwordsDataGridView.DefaultCellStyle.Font, FontStyle.Italic);*/
-
             passwordsDataGridView.SelectionMode =
                 DataGridViewSelectionMode.FullRowSelect;
             passwordsDataGridView.MultiSelect = false;
@@ -249,7 +241,29 @@ namespace Szyfrator
 
         private void passwordsDataGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
+            if ((e != null) && (e.RowIndex >= 0))
+            {
+                if (passwordsDataGridView.Rows[e.RowIndex].Cells[5].Value != null)
+                {
+                    passwordsDataGridView.Rows[e.RowIndex].Cells[4].Value = passwordsDataGridView.Rows[e.RowIndex].Cells[5].Value;
+                    Console.WriteLine(passwordsDataGridView.Rows[e.RowIndex].Cells[4].Value);
 
+                }
+            }
+        }
+
+        private void passwordsDataGridView_CellMouseUp(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            if ((e != null) && (e.RowIndex >= 0))
+            {
+                if ((passwordsDataGridView.Rows[e.RowIndex].Cells[4].Value != passwordsDataGridView.Rows[e.RowIndex].Cells[5].Value) && (!passwordsDataGridView.Rows[e.RowIndex].Cells[4].Value.ToString().Contains('\u0149')))
+                {
+                    passwordsDataGridView.Rows[e.RowIndex].Cells[5].Value = passwordsDataGridView.Rows[e.RowIndex].Cells[4].Value;
+                    passwordsDataGridView.Rows[e.RowIndex].Cells[4].Value = new String('\u0149', passwordsDataGridView.Rows[e.RowIndex].Cells[4].Value.ToString().Length);
+                    Console.WriteLine(passwordsDataGridView.Rows[e.RowIndex].Cells[5].Value);
+
+                }
+            }
         }
 
         private void PopulateDataGridView()
@@ -278,11 +292,6 @@ namespace Szyfrator
             passwordsDataGridView.Rows.Add(row5);
             passwordsDataGridView.Rows.Add(row6);
 
-            passwordsDataGridView.Columns[0].DisplayIndex = 3;
-            passwordsDataGridView.Columns[1].DisplayIndex = 4;
-            passwordsDataGridView.Columns[2].DisplayIndex = 0;
-            passwordsDataGridView.Columns[3].DisplayIndex = 1;
-            passwordsDataGridView.Columns[4].DisplayIndex = 2;
         }
 
     }
