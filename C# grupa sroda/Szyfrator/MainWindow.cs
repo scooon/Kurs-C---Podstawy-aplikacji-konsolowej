@@ -254,14 +254,22 @@ namespace Szyfrator
 
         private void passwordsDataGridView_CellMouseUp(object sender, DataGridViewCellMouseEventArgs e)
         {
+            
+        }
+
+        private void passwordsDataGridView_CellMouseLeave(object sender, DataGridViewCellEventArgs e)
+        {
             if ((e != null) && (e.RowIndex >= 0))
             {
-                if ((passwordsDataGridView.Rows[e.RowIndex].Cells[4].Value != passwordsDataGridView.Rows[e.RowIndex].Cells[5].Value) && (!passwordsDataGridView.Rows[e.RowIndex].Cells[4].Value.ToString().Contains('\u0149')))
+                if (passwordsDataGridView.Rows[e.RowIndex].Cells[4].Value != null)
                 {
-                    passwordsDataGridView.Rows[e.RowIndex].Cells[5].Value = passwordsDataGridView.Rows[e.RowIndex].Cells[4].Value;
-                    passwordsDataGridView.Rows[e.RowIndex].Cells[4].Value = new String('\u0149', passwordsDataGridView.Rows[e.RowIndex].Cells[4].Value.ToString().Length);
-                    Console.WriteLine(passwordsDataGridView.Rows[e.RowIndex].Cells[5].Value);
+                    if (!passwordsDataGridView.Rows[e.RowIndex].Cells[4].Value.ToString().Contains('\u25CF'))
+                    {
+                        passwordsDataGridView.Rows[e.RowIndex].Cells[5].Value = passwordsDataGridView.Rows[e.RowIndex].Cells[4].Value;
+                        passwordsDataGridView.Rows[e.RowIndex].Cells[4].Value = new String('\u25CF', passwordsDataGridView.Rows[e.RowIndex].Cells[4].Value.ToString().Length);
+                        Console.WriteLine(passwordsDataGridView.Rows[e.RowIndex].Cells[5].Value);
 
+                    }
                 }
             }
         }
