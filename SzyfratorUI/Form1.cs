@@ -140,7 +140,7 @@ namespace SzyfratorUI
             Console.WriteLine(jsonout);
 
             SetupLayout();
-            SetupDataGridView();
+            SetupDataGridView(passwords);
 
         }
 
@@ -182,11 +182,17 @@ namespace SzyfratorUI
         }
 
 
-        private void SetupDataGridView()
+        private void SetupDataGridView(List<Passwords> passwords)
         {
+
+            for (int i = 0; i < passwords.Count; i++)
+            {
+                this.dataGridView1.Rows.Add(passwords[i].index, passwords[i].name, passwords[i].login, passwords[i].password, "", passwords[i].email, passwords[i].notes);
+            }
+
             //this.Controls.Add(dataGridView1);
 
-            dataGridView1.ColumnCount = 7;
+            /* dataGridView1.ColumnCount = 7;
 
             dataGridView1.Name = "dataGridView1";
             //dataGridView1.Location = new Point(8, 8);
@@ -220,6 +226,7 @@ namespace SzyfratorUI
 
             dataGridView1.CellFormatting += new
                 DataGridViewCellFormattingEventHandler(dataGridView1_CellFormatting);
+            */
         }
 
         private void dataGridView1_CellFormatting(object sender,
@@ -293,6 +300,15 @@ namespace SzyfratorUI
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            unhidePwd(sender, e);
+        }
+
+        private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            unhidePwd(sender, e);
+        }
+        void unhidePwd(object sender, DataGridViewCellEventArgs e)
         {
             if ((e != null) && (e.RowIndex != -1) && (dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex].Value != null))
             {
