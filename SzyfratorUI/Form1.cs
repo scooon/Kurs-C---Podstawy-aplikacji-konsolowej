@@ -36,7 +36,7 @@ namespace SzyfratorUI
 
         private void Form1_Load(object sender, EventArgs e)
         {
-
+            SetupLayout();
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -139,7 +139,7 @@ namespace SzyfratorUI
 
             Console.WriteLine(jsonout);
 
-            SetupLayout();
+            
             SetupDataGridView(passwords);
 
         }
@@ -187,7 +187,7 @@ namespace SzyfratorUI
 
             for (int i = 0; i < passwords.Count; i++)
             {
-                this.dataGridView1.Rows.Add(passwords[i].index, passwords[i].name, passwords[i].login, passwords[i].password, "", passwords[i].email, passwords[i].notes);
+                this.dataGridView1.Rows.Add(passwords[i].index, passwords[i].name, passwords[i].login, new String('\u25cf', passwords[i].password.Length),passwords[i].password, passwords[i].email, passwords[i].notes);
             }
 
             //this.Controls.Add(dataGridView1);
