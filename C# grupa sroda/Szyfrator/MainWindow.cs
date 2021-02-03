@@ -33,7 +33,6 @@ namespace Szyfrator
             InitializeComponent();
             SetupLayout();
             SetupDataGridView();
-            PopulateDataGridView();
         }
 
         private void label1_Click(object sender, EventArgs e)
@@ -130,8 +129,14 @@ namespace Szyfrator
         private void button1_Click(object sender, EventArgs e)
         {
             string json = "[{'id':0,'name':'Nazwa','login':'Test','password':'5fda49edd6b82aabb37e2925','email':'Test@gmail.com','notes':'Jakieś notatki'},{'id':1,'name':'Nazwa','login':'Test','password':'5fda49eda7d62eb642d6d5ac','email':'Test@gmail.com','notes':'Jakieś notatki'},{'id':2,'name':'Nazwa','login':'Test','password':'5fda49eddefaac2371438b74','email':'Test@gmail.com','notes':'Jakieś notatki'},{'id':3,'name':'Nazwa','login':'Test','password':'5fda49edc16c2b741bcb0df5','email':'Test@gmail.com','notes':'Jakieś notatki'},{'id':4,'name':'Nazwa','login':'Test','password':'5fda49ed9d8b2e57be1dd37c','email':'Test@gmail.com','notes':'Jakieś notatki'},{'id':5,'name':'Nazwa','login':'Test','password':'5fda49edf1e39babf724fbe5','email':'Test@gmail.com','notes':'Jakieś notatki'}]";
-            //List<Password> passwords = JsonConvert.DeserializeObject<List<Password>>(json);
+            passwords = JsonConvert.DeserializeObject<List<Password>>(json);
+
+
+            PopulateDataGridView(passwords);
+
             //Console.WriteLine(passwords[2].password);
+
+
 
             string json2 = JsonConvert.SerializeObject(passwords);
 
@@ -241,16 +246,10 @@ namespace Szyfrator
 
         private void passwordsDataGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            if ((e != null) && (e.RowIndex >= 0))
-            {
-                if (passwordsDataGridView.Rows[e.RowIndex].Cells[5].Value != null)
-                {
-                    passwordsDataGridView.Rows[e.RowIndex].Cells[4].Value = passwordsDataGridView.Rows[e.RowIndex].Cells[5].Value;
-                    Console.WriteLine(passwordsDataGridView.Rows[e.RowIndex].Cells[4].Value);
-
-                }
-            }
+            unhidePwd(sender, e);
         }
+
+
 
         private void passwordsDataGridView_CellMouseUp(object sender, DataGridViewCellMouseEventArgs e)
         {
@@ -274,31 +273,31 @@ namespace Szyfrator
             }
         }
 
-        private void PopulateDataGridView()
+        private void unhidePwd(object sender, DataGridViewCellEventArgs e)
         {
+            if ((e != null) && (e.RowIndex >= 0))
+            {
+                if (passwordsDataGridView.Rows[e.RowIndex].Cells[5].Value != null)
+                {
+                    passwordsDataGridView.Rows[e.RowIndex].Cells[4].Value = passwordsDataGridView.Rows[e.RowIndex].Cells[5].Value;
+                    Console.WriteLine(passwordsDataGridView.Rows[e.RowIndex].Cells[4].Value);
 
-            string[] row0 = { "11/22/1968", "29", "Revolution 9",
-            "Beatles", "The Beatles [White Album]" };
-            string[] row1 = { "1960", "6", "Fools Rush In",
-            "Frank Sinatra", "Nice 'N' Easy" };
-            string[] row2 = { "11/11/1971", "1", "One of These Days",
-            "Pink Floyd", "Meddle" };
-            string[] row3 = { "1988", "7", "Where Is My Mind?",
-            "Pixies", "Surfer Rosa" };
-            string[] row4 = { "5/1981", "9", "Can't Find My Mind",
-            "Cramps", "Psychedelic Jungle" };
-            string[] row5 = { "6/10/2003", "13",
-            "Scatterbrain. (As Dead As Leaves.)",
-            "Radiohead", "Hail to the Thief" };
-            string[] row6 = { "6/30/1992", "3", "Dress", "P J Harvey", "Dry" };
+                }
+            }
+        }
 
-            passwordsDataGridView.Rows.Add(row0);
-            passwordsDataGridView.Rows.Add(row1);
-            passwordsDataGridView.Rows.Add(row2);
-            passwordsDataGridView.Rows.Add(row3);
-            passwordsDataGridView.Rows.Add(row4);
-            passwordsDataGridView.Rows.Add(row5);
-            passwordsDataGridView.Rows.Add(row6);
+        private void passwordsDataGridView_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            unhidePwd(sender, e);
+        }
+
+        private void PopulateDataGridView(List<Password> passwords)
+        {
+            for (int i = 0; i < passwords.Count; i++)
+            {
+                passwordsDataGridView.Rows.Add(passwords[i].id, passwords[i].name, passwords[i].login, passwords[i].email, new String('\u25CF', passwords[i].password.Length), passwords[i].password, passwords[i].notes);
+            }
+            
 
         }
 

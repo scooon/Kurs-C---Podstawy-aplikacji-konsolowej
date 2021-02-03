@@ -158,6 +158,7 @@
             this.passwordsDataGridView.RowTemplate.DefaultCellStyle.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             this.passwordsDataGridView.Size = new System.Drawing.Size(655, 326);
             this.passwordsDataGridView.TabIndex = 6;
+            this.passwordsDataGridView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.passwordsDataGridView_CellClick);
             this.passwordsDataGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.passwordsDataGridView_CellContentClick);
             this.passwordsDataGridView.CellMouseLeave += new System.Windows.Forms.DataGridViewCellEventHandler(this.passwordsDataGridView_CellMouseLeave);
             this.passwordsDataGridView.CellMouseUp += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.passwordsDataGridView_CellMouseUp);
@@ -194,6 +195,7 @@
             // 
             this.hiddenPwd.HeaderText = "hiddenPwd";
             this.hiddenPwd.Name = "hiddenPwd";
+            this.hiddenPwd.Visible = false;
             // 
             // Notes
             // 
@@ -218,7 +220,7 @@
             this.ForeColor = System.Drawing.Color.DarkOrange;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            //this.Name = "MainWindow";
+            this.Name = "MainWindow";
             this.Text = global::Szyfrator.Properties.Settings.Default.Szyfrator;
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.MainWindow_FormClosed);
             ((System.ComponentModel.ISupportInitialize)(this.passwordsDataGridView)).EndInit();
