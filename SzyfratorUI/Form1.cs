@@ -21,6 +21,7 @@ namespace SzyfratorUI
         byte[] iv = new byte[] { 251, 206, 128, 185, 18, 70, 175, 117, 81, 51, 116, 212, 182, 23, 144, 197, 95, 225, 96, 78, 148, 122, 191, 90, 95, 232, 52, 104, 203, 11, 146, 72 };
         string fileContent = string.Empty;
         string filePath = string.Empty;
+        int id = 0;
         List<Passwords> passwords;
         private Panel buttonPanel = new Panel();
         private Button addNewRowButton = new Button();
@@ -113,7 +114,8 @@ namespace SzyfratorUI
                 saveFileDialog1.Title = "Szyfrator - Zapisz plik";
                 saveFileDialog1.RestoreDirectory = true;
 
-                byte[] buffer = Encoding.UTF8.GetBytes(Strings.Encrypt(Content.Text, key, iv));
+                //byte[] buffer = Encoding.UTF8.GetBytes(Strings.Encrypt(Content.Text, key, iv));
+                byte[] buffer = Encoding.UTF8.GetBytes(getData());
 
                 if (saveFileDialog1.ShowDialog() == DialogResult.OK)
                 {
@@ -135,9 +137,7 @@ namespace SzyfratorUI
             string json = "[{'index':0,'name':'Nazwa','login':'Test','password':'5fd7a17eee119039335adb07','email':'Test@gmail.com','notes':'Jakieś notatki'},{'index':1,'name':'Nazwa','login':'Test','password':'5fd7a17eec845a3bba6cc10c','email':'Test@gmail.com','notes':'Jakieś notatki'},{ 'index':2,'name':'Nazwa','login':'Test','password':'5fd7a17e22ab30886f105c9f','email':'Test@gmail.com','notes':'Jakieś notatki'},{ 'index':3,'name':'Nazwa','login':'Test','password':'5fd7a17e0befe84e2a1739b1','email':'Test@gmail.com','notes':'Jakieś notatki'},{'index':4,'name':'Nazwa','login':'Test','password':'5fd7a17eaca98a53fa8cbbdf','email':'Test@gmail.com','notes':'Jakieś notatki'},{'index':5,'name':'Nazwa','login':'Test','password':'5fd7a17e04b2bc3004e66621','email':'Test@gmail.com','notes':'Jakieś notatki'}]";
             passwords = JsonConvert.DeserializeObject<List<Passwords>>(json);
 
-            string jsonout = JsonConvert.SerializeObject(passwords);
-
-            Console.WriteLine(jsonout);
+            
 
             
             SetupDataGridView(passwords);
@@ -167,7 +167,8 @@ namespace SzyfratorUI
 
         private void addNewRowButton_Click(object sender, EventArgs e)
         {
-            this.dataGridView1.Rows.Add();
+            id += 1;
+            this.dataGridView1.Rows.Add(id.ToString());
         }
 
         private void deleteRowButton_Click(object sender, EventArgs e)
@@ -187,7 +188,8 @@ namespace SzyfratorUI
 
             for (int i = 0; i < passwords.Count; i++)
             {
-                this.dataGridView1.Rows.Add(passwords[i].index, passwords[i].name, passwords[i].login, new String('\u25cf', passwords[i].password.Length),passwords[i].password, passwords[i].email, passwords[i].notes);
+                id += 1;
+                this.dataGridView1.Rows.Add(id.ToString(), passwords[i].name, passwords[i].login, new String('\u25cf', passwords[i].password.Length),passwords[i].password, passwords[i].email, passwords[i].notes);
             }
 
             //this.Controls.Add(dataGridView1);
@@ -332,5 +334,59 @@ namespace SzyfratorUI
                 }
             }
         }
+
+        private void jsonify_Click(object sender, EventArgs e)
+        {
+            
+
+            
+        }
+
+
+        string getData()
+        {
+
+            List<Passwords> toSave = new List<Passwords>();
+            string jsonout = "";
+            try
+            {
+                for (int i = 0; i < dataGridView1.Rows.Count; i++)
+                {
+                    if (
+                        (dataGridView1.Rows[i] != null) &&
+                        (dataGridView1.Rows[i].Cells[0].Value != null) &&
+                        (dataGridView1.Rows[i].Cells[1].Value != null) &&
+                        (dataGridView1.Rows[i].Cells[2].Value != null) &&
+                        (dataGridView1.Rows[i].Cells[4].Value != null) &&
+                        (dataGridView1.Rows[i].Cells[5].Value != null) &&
+                        (dataGridView1.Rows[i].Cells[6].Value != null)
+                        )
+                    {
+                        Passwords item = new Passwords();
+                        item.index = Convert.ToInt32(dataGridView1.Rows[i].Cells[0].Value);
+                        item.name = dataGridView1.Rows[i].Cells[1].Value.ToString();
+                        item.login = dataGridView1.Rows[i].Cells[2].Value.ToString();
+                        item.password = dataGridView1.Rows[i].Cells[4].Value.ToString();
+                        item.email = dataGridView1.Rows[i].Cells[5].Value.ToString();
+                        item.notes = dataGridView1.Rows[i].Cells[6].Value.ToString();
+                        toSave.Add(item);
+                    }
+                }
+
+                jsonout = JsonConvert.SerializeObject(toSave);
+
+                Console.WriteLine(jsonout);
+
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+
+            return jsonout;
+
+        }
+
     }
 }
