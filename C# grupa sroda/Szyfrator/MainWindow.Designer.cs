@@ -37,7 +37,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.OpenButton = new System.Windows.Forms.Button();
             this.SaveButton = new System.Windows.Forms.Button();
-            this.tekst = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
             this.passwordsDataGridView = new System.Windows.Forms.DataGridView();
             this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -47,6 +46,7 @@
             this.Password = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.hiddenPwd = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Notes = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.add = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.passwordsDataGridView)).BeginInit();
             this.SuspendLayout();
             // 
@@ -93,20 +93,9 @@
             this.SaveButton.UseVisualStyleBackColor = true;
             this.SaveButton.Click += new System.EventHandler(this.SaveButton_Click);
             // 
-            // tekst
-            // 
-            this.tekst.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
-            this.tekst.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.tekst.ForeColor = System.Drawing.Color.DarkOrange;
-            this.tekst.Location = new System.Drawing.Point(29, 239);
-            this.tekst.Multiline = true;
-            this.tekst.Name = "tekst";
-            this.tekst.Size = new System.Drawing.Size(82, 65);
-            this.tekst.TabIndex = 4;
-            // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(29, 167);
+            this.button1.Location = new System.Drawing.Point(29, 224);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 5;
@@ -116,6 +105,7 @@
             // 
             // passwordsDataGridView
             // 
+            this.passwordsDataGridView.AllowUserToAddRows = false;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             this.passwordsDataGridView.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.passwordsDataGridView.Anchor = System.Windows.Forms.AnchorStyles.Top;
@@ -150,6 +140,7 @@
             dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(90)))), ((int)(((byte)(90)))));
             dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.passwordsDataGridView.DefaultCellStyle = dataGridViewCellStyle4;
+            this.passwordsDataGridView.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.passwordsDataGridView.EnableHeadersVisualStyles = false;
             this.passwordsDataGridView.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(60)))), ((int)(((byte)(60)))));
             this.passwordsDataGridView.Location = new System.Drawing.Point(262, 65);
@@ -202,15 +193,26 @@
             this.Notes.HeaderText = "Notatki";
             this.Notes.Name = "Notes";
             // 
+            // add
+            // 
+            this.add.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.add.Location = new System.Drawing.Point(29, 130);
+            this.add.Name = "add";
+            this.add.Size = new System.Drawing.Size(96, 39);
+            this.add.TabIndex = 7;
+            this.add.Text = "Dodaj";
+            this.add.UseVisualStyleBackColor = true;
+            this.add.Click += new System.EventHandler(this.add_Click);
+            // 
             // MainWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
             this.ClientSize = new System.Drawing.Size(929, 519);
+            this.Controls.Add(this.add);
             this.Controls.Add(this.passwordsDataGridView);
             this.Controls.Add(this.button1);
-            this.Controls.Add(this.tekst);
             this.Controls.Add(this.SaveButton);
             this.Controls.Add(this.OpenButton);
             this.Controls.Add(this.label1);
@@ -235,7 +237,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button OpenButton;
         private System.Windows.Forms.Button SaveButton;
-        private System.Windows.Forms.TextBox tekst;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.DataGridView passwordsDataGridView;
         private System.Windows.Forms.DataGridViewTextBoxColumn ID;
@@ -245,6 +246,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Password;
         private System.Windows.Forms.DataGridViewTextBoxColumn hiddenPwd;
         private System.Windows.Forms.DataGridViewTextBoxColumn Notes;
+        private System.Windows.Forms.Button add;
     }
 }
 

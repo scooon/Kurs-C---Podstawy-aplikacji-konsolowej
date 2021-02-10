@@ -28,6 +28,8 @@ namespace Szyfrator
         private Button addNewRowButton = new Button();
         private Button deleteRowButton = new Button();
 
+        int index = 0;
+
         public MainWindow()
         {
             InitializeComponent();
@@ -61,7 +63,9 @@ namespace Szyfrator
                     {
                         content = reader.ReadToEnd();
                     }
-                    tekst.Text = deszyfruj(content);
+                    string json = deszyfruj(content);
+                    passwords = JsonConvert.DeserializeObject<List<Password>>(json);
+                    PopulateDataGridView(passwords);
 
                 }
             }
@@ -77,9 +81,10 @@ namespace Szyfrator
 
         private void SaveButton_Click(object sender, EventArgs e)
         {
-            string json = JsonConvert.SerializeObject(passwords);
-            byte[] byteArray = Encoding.UTF8.GetBytes(szyfruj(json));
-            
+
+            //byte[] byteArray = Encoding.UTF8.GetBytes(szyfruj(json));
+            byte[] byteArray = Encoding.UTF8.GetBytes(szyfruj(getData()));
+
             Stream myStream;
             SaveFileDialog saveFileDialog = new SaveFileDialog();
 
@@ -183,7 +188,8 @@ namespace Szyfrator
 
         private void addNewRowButton_Click(object sender, EventArgs e)
         {
-            this.passwordsDataGridView.Rows.Add();
+            index += 1;
+            this.passwordsDataGridView.Rows.Add(index.ToString());
         }
 
         private void deleteRowButton_Click(object sender, EventArgs e)
@@ -295,10 +301,46 @@ namespace Szyfrator
         {
             for (int i = 0; i < passwords.Count; i++)
             {
-                passwordsDataGridView.Rows.Add(passwords[i].id, passwords[i].name, passwords[i].login, passwords[i].email, new String('\u25CF', passwords[i].password.Length), passwords[i].password, passwords[i].notes);
+                index += 1;
+                passwordsDataGridView.Rows.Add(index.ToString(), passwords[i].name, passwords[i].login, passwords[i].email, new String('\u25CF', passwords[i].password.Length), passwords[i].password, passwords[i].notes);
             }
             
 
+        }
+
+        private void add_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        string getData()
+        {
+            List<Password> data = new List<Password>();
+
+            for (int i = 0; i < passwordsDataGridView.Rows.Count; i++)
+            {
+                if (
+                    (passwordsDataGridView.Rows[i].Cells[0].Value != null) &&
+                    (passwordsDataGridView.Rows[i].Cells[1].Value != null) &&
+                    (passwordsDataGridView.Rows[i].Cells[2].Value != null) &&
+                    (passwordsDataGridView.Rows[i].Cells[3].Value != null) &&
+                    (passwordsDataGridView.Rows[i].Cells[5].Value != null) &&
+                    (passwordsDataGridView.Rows[i].Cells[6].Value != null)
+
+                )
+                {
+                    Password item = new Password();
+                    item.id = Convert.ToInt32(passwordsDataGridView.Rows[i].Cells[0].Value);
+                    item.name = passwordsDataGridView.Rows[i].Cells[1].Value.ToString();
+                    item.login = passwordsDataGridView.Rows[i].Cells[2].Value.ToString();
+                    item.email = passwordsDataGridView.Rows[i].Cells[3].Value.ToString();
+                    item.password = passwordsDataGridView.Rows[i].Cells[5].Value.ToString();
+                    item.notes = passwordsDataGridView.Rows[i].Cells[6].Value.ToString();
+                    data.Add(item);
+                }
+            }
+
+            return JsonConvert.SerializeObject(passwords);
         }
 
     }
