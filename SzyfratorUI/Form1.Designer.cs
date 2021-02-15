@@ -49,6 +49,7 @@
             this.Notatki = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ShowPwd = new System.Windows.Forms.Button();
             this.jsonify = new System.Windows.Forms.Button();
+            this.AddPwd = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -228,7 +229,7 @@
             this.ShowPwd.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
             this.ShowPwd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.ShowPwd.ForeColor = System.Drawing.Color.DarkOrange;
-            this.ShowPwd.Location = new System.Drawing.Point(16, 281);
+            this.ShowPwd.Location = new System.Drawing.Point(16, 337);
             this.ShowPwd.Margin = new System.Windows.Forms.Padding(0);
             this.ShowPwd.Name = "ShowPwd";
             this.ShowPwd.Size = new System.Drawing.Size(123, 34);
@@ -247,12 +248,27 @@
             this.jsonify.UseVisualStyleBackColor = true;
             this.jsonify.Click += new System.EventHandler(this.jsonify_Click);
             // 
+            // AddPwd
+            // 
+            this.AddPwd.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
+            this.AddPwd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.AddPwd.ForeColor = System.Drawing.Color.DarkOrange;
+            this.AddPwd.Location = new System.Drawing.Point(16, 392);
+            this.AddPwd.Margin = new System.Windows.Forms.Padding(0);
+            this.AddPwd.Name = "AddPwd";
+            this.AddPwd.Size = new System.Drawing.Size(123, 34);
+            this.AddPwd.TabIndex = 10;
+            this.AddPwd.Text = "Dodaj hasło";
+            this.AddPwd.UseVisualStyleBackColor = false;
+            this.AddPwd.Click += new System.EventHandler(this.AddPwd_Click);
+            // 
             // Szyfrator
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
             this.ClientSize = new System.Drawing.Size(933, 519);
+            this.Controls.Add(this.AddPwd);
             this.Controls.Add(this.jsonify);
             this.Controls.Add(this.ShowPwd);
             this.Controls.Add(this.dataGridView1);
@@ -292,6 +308,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Email;
         private System.Windows.Forms.DataGridViewTextBoxColumn Notatki;
         private System.Windows.Forms.Button jsonify;
+        private System.Windows.Forms.Button AddPwd;
     }
 }
 

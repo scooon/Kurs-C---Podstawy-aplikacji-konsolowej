@@ -73,7 +73,12 @@ namespace SzyfratorUI
                             fileContent = reader.ReadToEnd();
                         }
 
-                        Content.Text = Strings.Decrypt(fileContent, key, iv);
+                        //Content.Text = Strings.Decrypt(fileContent, key, iv);
+
+                        passwords = new List<Passwords>();
+                        passwords.Clear();
+                        passwords = JsonConvert.DeserializeObject<List<Passwords>>(Strings.Decrypt(fileContent, key, iv));
+                        SetupDataGridView(passwords);
                     }
                 }
             }
@@ -114,8 +119,8 @@ namespace SzyfratorUI
                 saveFileDialog1.Title = "Szyfrator - Zapisz plik";
                 saveFileDialog1.RestoreDirectory = true;
 
-                //byte[] buffer = Encoding.UTF8.GetBytes(Strings.Encrypt(Content.Text, key, iv));
-                byte[] buffer = Encoding.UTF8.GetBytes(getData());
+                byte[] buffer = Encoding.UTF8.GetBytes(Strings.Encrypt(getData(), key, iv));
+                //byte[] buffer = Encoding.UTF8.GetBytes(getData());
 
                 if (saveFileDialog1.ShowDialog() == DialogResult.OK)
                 {
@@ -185,7 +190,8 @@ namespace SzyfratorUI
 
         private void SetupDataGridView(List<Passwords> passwords)
         {
-
+            dataGridView1.Rows.Clear();
+            id = 0;
             for (int i = 0; i < passwords.Count; i++)
             {
                 id += 1;
@@ -387,6 +393,14 @@ namespace SzyfratorUI
             return jsonout;
 
         }
+
+        private void AddPwd_Click(object sender, EventArgs e)
+        {
+            AddPassword dodaj = new AddPassword();
+            dodaj.Show();
+
+        }
+
 
     }
 }
