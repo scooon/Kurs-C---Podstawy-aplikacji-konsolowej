@@ -1,6 +1,6 @@
 ﻿namespace Szyfrator
 {
-    internal class Password
+    public class Password
     {
         public int id
         {

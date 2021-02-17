@@ -39,18 +39,22 @@
             this.PasswordTextBox = new System.Windows.Forms.TextBox();
             this.password = new System.Windows.Forms.Label();
             this.ShowPwd = new System.Windows.Forms.Button();
+            this.NotesTextBox = new System.Windows.Forms.TextBox();
+            this.notes = new System.Windows.Forms.Label();
+            this.closeButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // Addbutton
             // 
             this.Addbutton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Addbutton.ForeColor = System.Drawing.Color.DarkOrange;
-            this.Addbutton.Location = new System.Drawing.Point(24, 318);
+            this.Addbutton.Location = new System.Drawing.Point(24, 363);
             this.Addbutton.Name = "Addbutton";
             this.Addbutton.Size = new System.Drawing.Size(339, 43);
             this.Addbutton.TabIndex = 0;
             this.Addbutton.Text = "Dodaj hasło";
             this.Addbutton.UseVisualStyleBackColor = true;
+            this.Addbutton.Click += new System.EventHandler(this.Addbutton_Click);
             // 
             // label1
             // 
@@ -151,13 +155,54 @@
             this.ShowPwd.MouseDown += new System.Windows.Forms.MouseEventHandler(this.ShowPwd_MouseDown);
             this.ShowPwd.MouseUp += new System.Windows.Forms.MouseEventHandler(this.ShowPwd_MouseUp);
             // 
+            // NotesTextBox
+            // 
+            this.NotesTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(60)))), ((int)(((byte)(60)))));
+            this.NotesTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.NotesTextBox.ForeColor = System.Drawing.Color.DarkOrange;
+            this.NotesTextBox.Location = new System.Drawing.Point(24, 298);
+            this.NotesTextBox.Multiline = true;
+            this.NotesTextBox.Name = "NotesTextBox";
+            this.NotesTextBox.Size = new System.Drawing.Size(339, 45);
+            this.NotesTextBox.TabIndex = 11;
+            // 
+            // notes
+            // 
+            this.notes.AutoSize = true;
+            this.notes.Font = new System.Drawing.Font("Montserrat", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.notes.ForeColor = System.Drawing.Color.DarkOrange;
+            this.notes.Location = new System.Drawing.Point(21, 274);
+            this.notes.Name = "notes";
+            this.notes.Size = new System.Drawing.Size(68, 21);
+            this.notes.TabIndex = 10;
+            this.notes.Text = "Notatki:";
+            // 
+            // closeButton
+            // 
+            this.closeButton.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.closeButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.closeButton.ForeColor = System.Drawing.Color.DarkOrange;
+            this.closeButton.Location = new System.Drawing.Point(347, 9);
+            this.closeButton.Margin = new System.Windows.Forms.Padding(0);
+            this.closeButton.Name = "closeButton";
+            this.closeButton.Size = new System.Drawing.Size(34, 25);
+            this.closeButton.TabIndex = 12;
+            this.closeButton.Text = "X";
+            this.closeButton.UseVisualStyleBackColor = false;
+            this.closeButton.Click += new System.EventHandler(this.closeButton_Click);
+            // 
             // AddWindow
             // 
             this.AcceptButton = this.Addbutton;
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
-            this.ClientSize = new System.Drawing.Size(390, 373);
+            this.ClientSize = new System.Drawing.Size(390, 418);
+            this.Controls.Add(this.closeButton);
+            this.Controls.Add(this.NotesTextBox);
+            this.Controls.Add(this.notes);
             this.Controls.Add(this.ShowPwd);
             this.Controls.Add(this.PasswordTextBox);
             this.Controls.Add(this.password);
@@ -191,5 +236,8 @@
         private System.Windows.Forms.TextBox PasswordTextBox;
         private System.Windows.Forms.Label password;
         private System.Windows.Forms.Button ShowPwd;
+        private System.Windows.Forms.TextBox NotesTextBox;
+        private System.Windows.Forms.Label notes;
+        private System.Windows.Forms.Button closeButton;
     }
 }

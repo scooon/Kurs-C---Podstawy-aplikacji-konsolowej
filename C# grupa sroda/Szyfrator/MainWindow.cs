@@ -30,6 +30,8 @@ namespace Szyfrator
 
         int index = 0;
 
+
+
         public MainWindow()
         {
             InitializeComponent();
@@ -312,7 +314,18 @@ namespace Szyfrator
         {
             AddWindow add = new AddWindow();
             add.Show();
+            add.FormClosed += delegate
+            {
+                if (add.newItem != null)
+                {
+                    index += 1;
+                    passwordsDataGridView.Rows.Add(index.ToString(), add.newItem.name, add.newItem.login, add.newItem.email, new String('\u25CF', add.newItem.password.Length), add.newItem.password, add.newItem.notes);
+                }
+                //MessageBox.Show("subForm has closed");
+            };
+            
         }
+
 
         string getData()
         {
