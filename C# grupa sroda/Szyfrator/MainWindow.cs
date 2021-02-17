@@ -310,7 +310,8 @@ namespace Szyfrator
 
         private void add_Click(object sender, EventArgs e)
         {
-
+            AddWindow add = new AddWindow();
+            add.Show();
         }
 
         string getData()

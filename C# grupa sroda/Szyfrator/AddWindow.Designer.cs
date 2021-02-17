@@ -36,6 +36,9 @@
             this.label2 = new System.Windows.Forms.Label();
             this.EMailTextBox = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
+            this.PasswordTextBox = new System.Windows.Forms.TextBox();
+            this.password = new System.Windows.Forms.Label();
+            this.ShowPwd = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // Addbutton
@@ -112,6 +115,42 @@
             this.label3.TabIndex = 5;
             this.label3.Text = "E-Mail:";
             // 
+            // PasswordTextBox
+            // 
+            this.PasswordTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(60)))), ((int)(((byte)(60)))));
+            this.PasswordTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.PasswordTextBox.ForeColor = System.Drawing.Color.DarkOrange;
+            this.PasswordTextBox.Location = new System.Drawing.Point(24, 196);
+            this.PasswordTextBox.Name = "PasswordTextBox";
+            this.PasswordTextBox.Size = new System.Drawing.Size(339, 22);
+            this.PasswordTextBox.TabIndex = 8;
+            this.PasswordTextBox.UseSystemPasswordChar = true;
+            // 
+            // password
+            // 
+            this.password.AutoSize = true;
+            this.password.Font = new System.Drawing.Font("Montserrat", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.password.ForeColor = System.Drawing.Color.DarkOrange;
+            this.password.Location = new System.Drawing.Point(21, 172);
+            this.password.Name = "password";
+            this.password.Size = new System.Drawing.Size(54, 21);
+            this.password.TabIndex = 7;
+            this.password.Text = "Hasło:";
+            // 
+            // ShowPwd
+            // 
+            this.ShowPwd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ShowPwd.ForeColor = System.Drawing.Color.DarkOrange;
+            this.ShowPwd.Location = new System.Drawing.Point(25, 233);
+            this.ShowPwd.Name = "ShowPwd";
+            this.ShowPwd.Size = new System.Drawing.Size(339, 27);
+            this.ShowPwd.TabIndex = 9;
+            this.ShowPwd.Text = "Pokaż hasło";
+            this.ShowPwd.UseVisualStyleBackColor = true;
+            this.ShowPwd.Click += new System.EventHandler(this.ShowPwd_Click);
+            this.ShowPwd.MouseDown += new System.Windows.Forms.MouseEventHandler(this.ShowPwd_MouseDown);
+            this.ShowPwd.MouseUp += new System.Windows.Forms.MouseEventHandler(this.ShowPwd_MouseUp);
+            // 
             // AddWindow
             // 
             this.AcceptButton = this.Addbutton;
@@ -119,6 +158,9 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
             this.ClientSize = new System.Drawing.Size(390, 373);
+            this.Controls.Add(this.ShowPwd);
+            this.Controls.Add(this.PasswordTextBox);
+            this.Controls.Add(this.password);
             this.Controls.Add(this.EMailTextBox);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.LoginTextBox);
@@ -129,7 +171,7 @@
             this.Font = new System.Drawing.Font("Montserrat", 8.999999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "AddWindow";
             this.Text = "AddWindow";
             this.ResumeLayout(false);
@@ -146,5 +188,8 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox EMailTextBox;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.TextBox PasswordTextBox;
+        private System.Windows.Forms.Label password;
+        private System.Windows.Forms.Button ShowPwd;
     }
 }
