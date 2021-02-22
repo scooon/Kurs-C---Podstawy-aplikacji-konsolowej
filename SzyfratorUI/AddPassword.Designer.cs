@@ -105,9 +105,9 @@
             this.haslo_textbox.ForeColor = System.Drawing.Color.DarkOrange;
             this.haslo_textbox.Location = new System.Drawing.Point(12, 127);
             this.haslo_textbox.Name = "haslo_textbox";
-            this.haslo_textbox.PasswordChar = '●';
             this.haslo_textbox.Size = new System.Drawing.Size(328, 20);
             this.haslo_textbox.TabIndex = 6;
+            this.haslo_textbox.UseSystemPasswordChar = true;
             // 
             // haslo
             // 
@@ -130,6 +130,9 @@
             this.showPwd.Text = "Pokaż hasło";
             this.showPwd.UseVisualStyleBackColor = true;
             this.showPwd.Click += new System.EventHandler(this.showPwd_Click);
+            this.showPwd.MouseDown += new System.Windows.Forms.MouseEventHandler(this.showPwd_MouseDown);
+            this.showPwd.MouseLeave += new System.EventHandler(this.showPwd_MouseLeave);
+            this.showPwd.MouseUp += new System.Windows.Forms.MouseEventHandler(this.showPwd_MouseUp);
             // 
             // email_textbox
             // 
@@ -139,7 +142,6 @@
             this.email_textbox.ForeColor = System.Drawing.Color.DarkOrange;
             this.email_textbox.Location = new System.Drawing.Point(14, 227);
             this.email_textbox.Name = "email_textbox";
-            this.email_textbox.PasswordChar = '●';
             this.email_textbox.Size = new System.Drawing.Size(328, 20);
             this.email_textbox.TabIndex = 9;
             // 
@@ -162,7 +164,6 @@
             this.notatki_textbox.Location = new System.Drawing.Point(14, 273);
             this.notatki_textbox.Multiline = true;
             this.notatki_textbox.Name = "notatki_textbox";
-            this.notatki_textbox.PasswordChar = '●';
             this.notatki_textbox.Size = new System.Drawing.Size(328, 66);
             this.notatki_textbox.TabIndex = 11;
             // 

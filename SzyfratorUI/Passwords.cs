@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SzyfratorUI
 {
-        internal class Passwords
+        public class Passwords
         {
             public int index
             {

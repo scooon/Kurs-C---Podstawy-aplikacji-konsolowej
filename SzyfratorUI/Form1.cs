@@ -358,23 +358,65 @@ namespace SzyfratorUI
             {
                 for (int i = 0; i < dataGridView1.Rows.Count; i++)
                 {
-                    if (
-                        (dataGridView1.Rows[i] != null) &&
-                        (dataGridView1.Rows[i].Cells[0].Value != null) &&
-                        (dataGridView1.Rows[i].Cells[1].Value != null) &&
-                        (dataGridView1.Rows[i].Cells[2].Value != null) &&
-                        (dataGridView1.Rows[i].Cells[4].Value != null) &&
-                        (dataGridView1.Rows[i].Cells[5].Value != null) &&
-                        (dataGridView1.Rows[i].Cells[6].Value != null)
-                        )
-                    {
+                    if (dataGridView1.Rows[i] != null){
+
                         Passwords item = new Passwords();
-                        item.index = Convert.ToInt32(dataGridView1.Rows[i].Cells[0].Value);
-                        item.name = dataGridView1.Rows[i].Cells[1].Value.ToString();
-                        item.login = dataGridView1.Rows[i].Cells[2].Value.ToString();
-                        item.password = dataGridView1.Rows[i].Cells[4].Value.ToString();
-                        item.email = dataGridView1.Rows[i].Cells[5].Value.ToString();
-                        item.notes = dataGridView1.Rows[i].Cells[6].Value.ToString();
+
+                        if (dataGridView1.Rows[i].Cells[0].Value != null)
+                        {
+                            item.index = Convert.ToInt32(dataGridView1.Rows[i].Cells[0].Value);
+                        }
+                        else
+                        {
+                            item.index = 0;
+                        }
+
+                        if (dataGridView1.Rows[i].Cells[1].Value != null)
+                        {
+                            item.name = dataGridView1.Rows[i].Cells[1].Value.ToString();
+                        }
+                        else
+                        {
+                            item.name = "";
+                        }
+
+                        if (dataGridView1.Rows[i].Cells[2].Value != null)
+                        {
+                            item.login = dataGridView1.Rows[i].Cells[2].Value.ToString();
+                        }
+                        else
+                        {
+                            item.login = "";
+                        }
+
+                        if (dataGridView1.Rows[i].Cells[4].Value != null)
+                        {
+                            item.password = dataGridView1.Rows[i].Cells[4].Value.ToString();
+                        }
+                        else
+                        {
+                            item.password = "";
+                        }
+
+                        if (dataGridView1.Rows[i].Cells[5].Value != null)
+                        {
+                            item.email = dataGridView1.Rows[i].Cells[5].Value.ToString();
+                        }
+                        else
+                        {
+                            item.email = "";
+                        }
+
+                        if (dataGridView1.Rows[i].Cells[6].Value != null)
+                        {
+                            item.notes = dataGridView1.Rows[i].Cells[6].Value.ToString();
+                        }
+                        else
+                        {
+                            item.notes = "";
+                        }
+
+
                         toSave.Add(item);
                     }
                 }
@@ -398,6 +440,14 @@ namespace SzyfratorUI
         {
             AddPassword dodaj = new AddPassword();
             dodaj.Show();
+            dodaj.FormClosed += delegate
+            {
+                if (dodaj.item != null)
+                {
+                    id += 1;
+                    dataGridView1.Rows.Add(id.ToString(), dodaj.item.name, dodaj.item.login, new String('\u25CF', dodaj.item.password.Length), dodaj.item.password, dodaj.item.email, dodaj.item.notes);
+                }
+            };
 
         }
 
