@@ -333,28 +333,65 @@ namespace Szyfrator
 
             for (int i = 0; i < passwordsDataGridView.Rows.Count; i++)
             {
-                if (
-                    (passwordsDataGridView.Rows[i].Cells[0].Value != null) &&
-                    (passwordsDataGridView.Rows[i].Cells[1].Value != null) &&
-                    (passwordsDataGridView.Rows[i].Cells[2].Value != null) &&
-                    (passwordsDataGridView.Rows[i].Cells[3].Value != null) &&
-                    (passwordsDataGridView.Rows[i].Cells[5].Value != null) &&
-                    (passwordsDataGridView.Rows[i].Cells[6].Value != null)
-
-                )
+                if (passwordsDataGridView.Rows[i] != null)
                 {
                     Password item = new Password();
-                    item.id = Convert.ToInt32(passwordsDataGridView.Rows[i].Cells[0].Value);
-                    item.name = passwordsDataGridView.Rows[i].Cells[1].Value.ToString();
-                    item.login = passwordsDataGridView.Rows[i].Cells[2].Value.ToString();
-                    item.email = passwordsDataGridView.Rows[i].Cells[3].Value.ToString();
-                    item.password = passwordsDataGridView.Rows[i].Cells[5].Value.ToString();
-                    item.notes = passwordsDataGridView.Rows[i].Cells[6].Value.ToString();
+
+                    if(passwordsDataGridView.Rows[i].Cells[0].Value != null)
+                    {
+                        item.id = Convert.ToInt32(passwordsDataGridView.Rows[i].Cells[0].Value);
+                    }
+                    else
+                    {
+                        item.id = 0;
+                    }
+
+                    if (passwordsDataGridView.Rows[i].Cells[1].Value != null)
+                    {
+                        item.name = passwordsDataGridView.Rows[i].Cells[1].Value.ToString();
+                    }
+                    else
+                    {
+                        item.name = "";
+                    }
+                    if (passwordsDataGridView.Rows[i].Cells[2].Value != null)
+                    {
+                        item.login = passwordsDataGridView.Rows[i].Cells[2].Value.ToString();
+                    }
+                    else
+                    {
+                        item.login = "";
+                    }
+                    if (passwordsDataGridView.Rows[i].Cells[3].Value != null)
+                    {
+                        item.email = passwordsDataGridView.Rows[i].Cells[3].Value.ToString();
+                    }
+                    else
+                    {
+                        item.email = "";
+                    }
+                    if (passwordsDataGridView.Rows[i].Cells[5].Value != null)
+                    {
+                        item.password = passwordsDataGridView.Rows[i].Cells[5].Value.ToString();
+                    }
+                    else
+                    {
+                        item.password = "";
+                    }
+                    if (passwordsDataGridView.Rows[i].Cells[6].Value != null)
+                    {
+                        item.notes = passwordsDataGridView.Rows[i].Cells[6].Value.ToString();
+                    }
+                    else
+                    {
+                        item.notes = "";
+                    }
+
                     data.Add(item);
                 }
             }
 
-            return JsonConvert.SerializeObject(passwords);
+            return JsonConvert.SerializeObject(data);
         }
 
     }
