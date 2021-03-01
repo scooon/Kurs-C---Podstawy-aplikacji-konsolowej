@@ -23,9 +23,7 @@ namespace SzyfratorUI
         string filePath = string.Empty;
         int id = 0;
         List<Passwords> passwords;
-        private Panel buttonPanel = new Panel();
-        private Button addNewRowButton = new Button();
-        private Button deleteRowButton = new Button();
+        private static string password = "";
 
 
 
@@ -37,7 +35,7 @@ namespace SzyfratorUI
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            SetupLayout();
+
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -149,26 +147,7 @@ namespace SzyfratorUI
 
         }
 
-        private void SetupLayout()
-        {
-            //this.Size = new Size(600, 500);
 
-            addNewRowButton.Text = "Dodaj hasło";
-            addNewRowButton.Location = new Point(10, 10);
-            addNewRowButton.Click += new EventHandler(addNewRowButton_Click);
-
-            deleteRowButton.Text = "Usuń hasło";
-            deleteRowButton.Location = new Point(100, 10);
-            deleteRowButton.Click += new EventHandler(deleteRowButton_Click);
-
-            buttonPanel.Controls.Add(addNewRowButton);
-            buttonPanel.Controls.Add(deleteRowButton);
-            buttonPanel.Height = 50;
-            buttonPanel.Dock = DockStyle.Bottom;
-
-            //this.Controls.Add(this.buttonPanel);
-            dataGridView1.Controls.Add(this.buttonPanel);
-        }
 
         private void addNewRowButton_Click(object sender, EventArgs e)
         {
@@ -178,9 +157,7 @@ namespace SzyfratorUI
 
         private void deleteRowButton_Click(object sender, EventArgs e)
         {
-            if (this.dataGridView1.SelectedRows.Count > 0 &&
-                this.dataGridView1.SelectedRows[0].Index !=
-                this.dataGridView1.Rows.Count - 1)
+            if (this.dataGridView1.SelectedRows.Count > 0)
             {
                 this.dataGridView1.Rows.RemoveAt(
                     this.dataGridView1.SelectedRows[0].Index);
@@ -438,6 +415,26 @@ namespace SzyfratorUI
 
         private void AddPwd_Click(object sender, EventArgs e)
         {
+            if (password == "")
+            {
+                setPassword nowe = new setPassword();
+                nowe.Show();
+                nowe.FormClosed += delegate
+                {
+                    addItem();
+                };
+            }
+            else
+            {
+                addItem(); // Do poprawienia
+            }
+
+            
+
+        }
+
+        private void addItem()
+        {
             AddPassword dodaj = new AddPassword();
             dodaj.Show();
             dodaj.FormClosed += delegate
@@ -448,9 +445,23 @@ namespace SzyfratorUI
                     dataGridView1.Rows.Add(id.ToString(), dodaj.item.name, dodaj.item.login, new String('\u25CF', dodaj.item.password.Length), dodaj.item.password, dodaj.item.email, dodaj.item.notes);
                 }
             };
-
         }
 
+        private void deletePwd_Click(object sender, EventArgs e)
+        {
+            if (this.dataGridView1.SelectedRows.Count > 0)
+            {
+                this.dataGridView1.Rows.RemoveAt(
+                    this.dataGridView1.SelectedRows[0].Index);
+            }
+        }
+
+
+        public static bool setPassword(string pwd)
+        {
+            password = pwd;
+            return true;
+        }
 
     }
 }
