@@ -37,7 +37,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.OpenButton = new System.Windows.Forms.Button();
             this.SaveButton = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
             this.passwordsDataGridView = new System.Windows.Forms.DataGridView();
             this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Name = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -47,6 +46,7 @@
             this.hiddenPwd = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Notes = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.add = new System.Windows.Forms.Button();
+            this.deleteButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.passwordsDataGridView)).BeginInit();
             this.SuspendLayout();
             // 
@@ -93,16 +93,6 @@
             this.SaveButton.UseVisualStyleBackColor = true;
             this.SaveButton.Click += new System.EventHandler(this.SaveButton_Click);
             // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(29, 224);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 5;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
             // passwordsDataGridView
             // 
             this.passwordsDataGridView.AllowUserToAddRows = false;
@@ -147,6 +137,7 @@
             this.passwordsDataGridView.Name = "passwordsDataGridView";
             this.passwordsDataGridView.RowHeadersVisible = false;
             this.passwordsDataGridView.RowTemplate.DefaultCellStyle.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.passwordsDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.passwordsDataGridView.Size = new System.Drawing.Size(655, 326);
             this.passwordsDataGridView.TabIndex = 6;
             this.passwordsDataGridView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.passwordsDataGridView_CellClick);
@@ -204,15 +195,26 @@
             this.add.UseVisualStyleBackColor = true;
             this.add.Click += new System.EventHandler(this.add_Click);
             // 
+            // deleteButton
+            // 
+            this.deleteButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.deleteButton.Location = new System.Drawing.Point(131, 130);
+            this.deleteButton.Name = "deleteButton";
+            this.deleteButton.Size = new System.Drawing.Size(93, 39);
+            this.deleteButton.TabIndex = 8;
+            this.deleteButton.Text = "Usuń";
+            this.deleteButton.UseVisualStyleBackColor = true;
+            this.deleteButton.Click += new System.EventHandler(this.deleteButton_Click);
+            // 
             // MainWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
             this.ClientSize = new System.Drawing.Size(929, 519);
+            this.Controls.Add(this.deleteButton);
             this.Controls.Add(this.add);
             this.Controls.Add(this.passwordsDataGridView);
-            this.Controls.Add(this.button1);
             this.Controls.Add(this.SaveButton);
             this.Controls.Add(this.OpenButton);
             this.Controls.Add(this.label1);
@@ -222,6 +224,7 @@
             this.ForeColor = System.Drawing.Color.DarkOrange;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.Name = "MainWindow";
             this.Text = global::Szyfrator.Properties.Settings.Default.Szyfrator;
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.MainWindow_FormClosed);
             ((System.ComponentModel.ISupportInitialize)(this.passwordsDataGridView)).EndInit();
@@ -236,7 +239,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button OpenButton;
         private System.Windows.Forms.Button SaveButton;
-        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.DataGridView passwordsDataGridView;
         private System.Windows.Forms.DataGridViewTextBoxColumn ID;
         private System.Windows.Forms.DataGridViewTextBoxColumn Name;
@@ -246,6 +248,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn hiddenPwd;
         private System.Windows.Forms.DataGridViewTextBoxColumn Notes;
         private System.Windows.Forms.Button add;
+        private System.Windows.Forms.Button deleteButton;
     }
 }
 

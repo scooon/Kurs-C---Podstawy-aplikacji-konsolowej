@@ -64,6 +64,12 @@
     <Compile Include="MainWindow.Designer.cs">
       <DependentUpon>MainWindow.cs</DependentUpon>
     </Compile>
+    <Compile Include="newPassword.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="newPassword.Designer.cs">
+      <DependentUpon>newPassword.cs</DependentUpon>
+    </Compile>
     <Compile Include="Password.cs" />
     <Compile Include="PasswordBox.cs">
       <SubType>Form</SubType>
@@ -78,6 +84,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="MainWindow.resx">
       <DependentUpon>MainWindow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="newPassword.resx">
+      <DependentUpon>newPassword.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PasswordBox.resx">
       <DependentUpon>PasswordBox.cs</DependentUpon>
