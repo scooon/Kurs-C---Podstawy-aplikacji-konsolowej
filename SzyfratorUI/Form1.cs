@@ -75,8 +75,51 @@ namespace SzyfratorUI
 
                         passwords = new List<Passwords>();
                         passwords.Clear();
-                        passwords = JsonConvert.DeserializeObject<List<Passwords>>(Strings.Decrypt(fileContent, key, iv));
-                        SetupDataGridView(passwords);
+                        string input = Strings.Decrypt(fileContent, key, iv);
+                        string password = input.Substring(0, input.IndexOf("|password|"));
+                        if (password.Length > 0)
+                        {
+                            Password pass = new Password();
+                            pass.Show();
+                            pass.FormClosed += delegate
+                            {
+
+                                if (pass.getPassword() == password)
+                                {
+
+
+
+
+                                    DialogResult result = MessageBox.Show("Witaj!", "Witaj! Logowanie przebiegło pomyślnie!");
+                                    if (result == System.Windows.Forms.DialogResult.OK)
+                                    {
+                                        string json = input.Substring(input.IndexOf("|password|") + 10);
+                                        passwords = JsonConvert.DeserializeObject<List<Passwords>>(json);
+                                        SetupDataGridView(passwords);
+                                    }
+
+                                }
+                                else
+                                {
+
+                                    DialogResult result = MessageBox.Show("Hasło nieprawidłowe!", "Logowanie nieudane :(");
+
+                                    if (result == System.Windows.Forms.DialogResult.OK)
+                                    {
+                                        //this.Close();
+                                    }
+
+                                }
+
+
+
+                            };
+                        }
+                        else
+                        {
+                            MessageBox.Show("Wybrany plik, nie jest plikiem programu Szyfrator!", "Niewłaściwy plik!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                        }
                     }
                 }
             }
@@ -84,8 +127,8 @@ namespace SzyfratorUI
             {
                 MessageBox.Show("Wybrany plik, nie jest plikiem programu Szyfrator!", "Niewłaściwy plik!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            
-            
+
+
 
         }
 
@@ -140,9 +183,9 @@ namespace SzyfratorUI
             string json = "[{'index':0,'name':'Nazwa','login':'Test','password':'5fd7a17eee119039335adb07','email':'Test@gmail.com','notes':'Jakieś notatki'},{'index':1,'name':'Nazwa','login':'Test','password':'5fd7a17eec845a3bba6cc10c','email':'Test@gmail.com','notes':'Jakieś notatki'},{ 'index':2,'name':'Nazwa','login':'Test','password':'5fd7a17e22ab30886f105c9f','email':'Test@gmail.com','notes':'Jakieś notatki'},{ 'index':3,'name':'Nazwa','login':'Test','password':'5fd7a17e0befe84e2a1739b1','email':'Test@gmail.com','notes':'Jakieś notatki'},{'index':4,'name':'Nazwa','login':'Test','password':'5fd7a17eaca98a53fa8cbbdf','email':'Test@gmail.com','notes':'Jakieś notatki'},{'index':5,'name':'Nazwa','login':'Test','password':'5fd7a17e04b2bc3004e66621','email':'Test@gmail.com','notes':'Jakieś notatki'}]";
             passwords = JsonConvert.DeserializeObject<List<Passwords>>(json);
 
-            
 
-            
+
+
             SetupDataGridView(passwords);
 
         }
@@ -172,7 +215,7 @@ namespace SzyfratorUI
             for (int i = 0; i < passwords.Count; i++)
             {
                 id += 1;
-                this.dataGridView1.Rows.Add(id.ToString(), passwords[i].name, passwords[i].login, new String('\u25cf', passwords[i].password.Length),passwords[i].password, passwords[i].email, passwords[i].notes);
+                this.dataGridView1.Rows.Add(id.ToString(), passwords[i].name, passwords[i].login, new String('\u25cf', passwords[i].password.Length), passwords[i].password, passwords[i].email, passwords[i].notes);
             }
 
             //this.Controls.Add(dataGridView1);
@@ -217,7 +260,7 @@ namespace SzyfratorUI
         private void dataGridView1_CellFormatting(object sender,
         System.Windows.Forms.DataGridViewCellFormattingEventArgs e)
         {
-            
+
         }
 
         private void ShowPwd_Click(object sender, EventArgs e)
@@ -242,9 +285,9 @@ namespace SzyfratorUI
                         try
                         {
                             if (dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString().Contains('\u25CF'))
-                            { 
+                            {
                                 dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex].Value = dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex + 1].Value;
- 
+
                             }
                         }
                         catch (FormatException)
@@ -254,7 +297,7 @@ namespace SzyfratorUI
                     }
                 }
             }
-        
+
         }
 
         private void dataGridView1_CellMouseLeave(object sender, System.Windows.Forms.DataGridViewCellEventArgs e)
@@ -320,9 +363,9 @@ namespace SzyfratorUI
 
         private void jsonify_Click(object sender, EventArgs e)
         {
-            
 
-            
+
+
         }
 
 
@@ -335,7 +378,8 @@ namespace SzyfratorUI
             {
                 for (int i = 0; i < dataGridView1.Rows.Count; i++)
                 {
-                    if (dataGridView1.Rows[i] != null){
+                    if (dataGridView1.Rows[i] != null)
+                    {
 
                         Passwords item = new Passwords();
 
@@ -398,7 +442,8 @@ namespace SzyfratorUI
                     }
                 }
 
-                jsonout = JsonConvert.SerializeObject(toSave);
+                jsonout = Passwords.getPassword() + "|password|";
+                jsonout += JsonConvert.SerializeObject(toSave);
 
                 Console.WriteLine(jsonout);
 
@@ -415,13 +460,17 @@ namespace SzyfratorUI
 
         private void AddPwd_Click(object sender, EventArgs e)
         {
-            if (password == "")
+            if (Passwords.getPassword() == "")
             {
                 setPassword nowe = new setPassword();
                 nowe.Show();
                 nowe.FormClosed += delegate
                 {
-                    addItem();
+                    if (Passwords.getPassword() != "")
+                    {
+                        addItem();
+                    }
+
                 };
             }
             else
@@ -429,7 +478,7 @@ namespace SzyfratorUI
                 addItem(); // Do poprawienia
             }
 
-            
+
 
         }
 

@@ -15,6 +15,8 @@ namespace SzyfratorUI
         public setPassword()
         {
             InitializeComponent();
+            NewPasswordTextbox.UseSystemPasswordChar = true;
+            RepeatNewPasswordTextBox.UseSystemPasswordChar = true;
         }
 
         private void button1_MouseDown(object sender, MouseEventArgs e)
@@ -46,7 +48,7 @@ namespace SzyfratorUI
                 {
                     if (NewPasswordTextbox.Text.Length > 7)
                     {
-                        if (Szyfrator.setPassword(NewPasswordTextbox.Text))
+                        if (Passwords.setPassword(NewPasswordTextbox.Text))
                         {
                             this.Close();
                         }

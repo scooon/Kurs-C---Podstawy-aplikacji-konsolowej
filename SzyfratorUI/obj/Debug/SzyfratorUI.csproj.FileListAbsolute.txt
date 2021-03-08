@@ -14,3 +14,4 @@ C:\Users\Scooon\Documents\Kursy\C#\Kurs-CSharp-Podstawy-aplikacji-konsolowej\Szy
 C:\Users\Scooon\Documents\Kursy\C#\Kurs-CSharp-Podstawy-aplikacji-konsolowej\SzyfratorUI\bin\Debug\Newtonsoft.Json.dll
 C:\Users\Scooon\Documents\Kursy\C#\Kurs-CSharp-Podstawy-aplikacji-konsolowej\SzyfratorUI\bin\Debug\Newtonsoft.Json.xml
 C:\Users\Scooon\Documents\Kursy\C#\Kurs-CSharp-Podstawy-aplikacji-konsolowej\SzyfratorUI\obj\Debug\SzyfratorUI.AddPassword.resources
+C:\Users\Scooon\Documents\Kursy\C#\Kurs-CSharp-Podstawy-aplikacji-konsolowej\SzyfratorUI\obj\Debug\SzyfratorUI.setPassword.resources
