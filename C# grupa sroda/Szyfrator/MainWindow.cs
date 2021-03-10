@@ -64,10 +64,25 @@ namespace Szyfrator
                     {
                         content = reader.ReadToEnd();
                     }
-                    string json = deszyfruj(content);
-                    passwords = JsonConvert.DeserializeObject<List<Password>>(json);
-                    PopulateDataGridView(passwords);
-
+                    string input = deszyfruj(content);
+                    string pass = input.Substring(0, input.IndexOf("|password|"));
+                    string json = input.Substring(input.IndexOf("|password|") + 10);
+                    if (pass.Length > 0)
+                    {
+                        PasswordBox checkPwd = new PasswordBox();
+                        checkPwd.Show();
+                        checkPwd.FormClosed += delegate
+                        {
+                            if (PasswordBox.getPassword() == pass)
+                            {
+                                Password.setPassword(pass);
+                                passwords = JsonConvert.DeserializeObject<List<Password>>(json);
+                                PopulateDataGridView(passwords);
+                            } //else dopisać!!!
+                            
+                        };
+                        
+                    }
                 }
             }
 
@@ -84,7 +99,8 @@ namespace Szyfrator
         {
 
             //byte[] byteArray = Encoding.UTF8.GetBytes(szyfruj(json));
-            byte[] byteArray = Encoding.UTF8.GetBytes(szyfruj(getData()));
+            string json = Password.getPassword() + "|password|" + getData();
+            byte[] byteArray = Encoding.UTF8.GetBytes(szyfruj(json));
 
             Stream myStream;
             SaveFileDialog saveFileDialog = new SaveFileDialog();
@@ -291,6 +307,29 @@ namespace Szyfrator
 
         private void add_Click(object sender, EventArgs e)
         {
+            
+            if (Password.getPassword() == "")
+            {
+                newPassword newPwd = new newPassword();
+                newPwd.Show();
+                newPwd.FormClosed += delegate
+                {
+                    Password.setPassword(newPassword.getPassword());
+                    if(Password.getPassword() != "")
+                    {
+                        addItem();
+                    }
+                };
+            }
+            else
+            {
+                addItem();
+            }
+            
+        }
+
+        private void addItem()
+        {
             AddWindow add = new AddWindow();
             add.Show();
             add.FormClosed += delegate
@@ -302,7 +341,6 @@ namespace Szyfrator
                 }
                 //MessageBox.Show("subForm has closed");
             };
-            
         }
 
         private void deleteButton_Click(object sender, EventArgs e)

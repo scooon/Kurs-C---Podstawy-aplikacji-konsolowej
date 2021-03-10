@@ -108,6 +108,7 @@
             this.setPwd.TabIndex = 6;
             this.setPwd.Text = "Ustaw nowe hasło";
             this.setPwd.UseVisualStyleBackColor = false;
+            this.setPwd.Click += new System.EventHandler(this.setPwd_Click);
             // 
             // newPasswordTextbox
             // 
@@ -151,7 +152,7 @@
             this.ForeColor = System.Drawing.Color.DarkOrange;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.Margin = new System.Windows.Forms.Padding(5);
             this.Name = "newPassword";
             this.ShowInTaskbar = false;
             this.Text = "newPassword";

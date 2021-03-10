@@ -38,15 +38,15 @@
             this.OpenButton = new System.Windows.Forms.Button();
             this.SaveButton = new System.Windows.Forms.Button();
             this.passwordsDataGridView = new System.Windows.Forms.DataGridView();
+            this.add = new System.Windows.Forms.Button();
+            this.deleteButton = new System.Windows.Forms.Button();
             this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Name = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Login = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Email = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Password = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Password_Column = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.hiddenPwd = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Notes = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.add = new System.Windows.Forms.Button();
-            this.deleteButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.passwordsDataGridView)).BeginInit();
             this.SuspendLayout();
             // 
@@ -119,7 +119,7 @@
             this.Name,
             this.Login,
             this.Email,
-            this.Password,
+            this.Password_Column,
             this.hiddenPwd,
             this.Notes});
             dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
@@ -145,6 +145,28 @@
             this.passwordsDataGridView.CellMouseLeave += new System.Windows.Forms.DataGridViewCellEventHandler(this.passwordsDataGridView_CellMouseLeave);
             this.passwordsDataGridView.CellMouseUp += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.passwordsDataGridView_CellMouseUp);
             // 
+            // add
+            // 
+            this.add.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.add.Location = new System.Drawing.Point(29, 130);
+            this.add.Name = "add";
+            this.add.Size = new System.Drawing.Size(96, 39);
+            this.add.TabIndex = 7;
+            this.add.Text = "Dodaj";
+            this.add.UseVisualStyleBackColor = true;
+            this.add.Click += new System.EventHandler(this.add_Click);
+            // 
+            // deleteButton
+            // 
+            this.deleteButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.deleteButton.Location = new System.Drawing.Point(131, 130);
+            this.deleteButton.Name = "deleteButton";
+            this.deleteButton.Size = new System.Drawing.Size(93, 39);
+            this.deleteButton.TabIndex = 8;
+            this.deleteButton.Text = "Usuń";
+            this.deleteButton.UseVisualStyleBackColor = true;
+            this.deleteButton.Click += new System.EventHandler(this.deleteButton_Click);
+            // 
             // ID
             // 
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
@@ -168,10 +190,10 @@
             this.Email.HeaderText = "E-mail";
             this.Email.Name = "Email";
             // 
-            // Password
+            // Password_Column
             // 
-            this.Password.HeaderText = "Hasło";
-            this.Password.Name = "Password";
+            this.Password_Column.HeaderText = "Hasło";
+            this.Password_Column.Name = "Password_Column";
             // 
             // hiddenPwd
             // 
@@ -183,28 +205,6 @@
             // 
             this.Notes.HeaderText = "Notatki";
             this.Notes.Name = "Notes";
-            // 
-            // add
-            // 
-            this.add.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.add.Location = new System.Drawing.Point(29, 130);
-            this.add.Name = "add";
-            this.add.Size = new System.Drawing.Size(96, 39);
-            this.add.TabIndex = 7;
-            this.add.Text = "Dodaj";
-            this.add.UseVisualStyleBackColor = true;
-            this.add.Click += new System.EventHandler(this.add_Click);
-            // 
-            // deleteButton
-            // 
-            this.deleteButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.deleteButton.Location = new System.Drawing.Point(131, 130);
-            this.deleteButton.Name = "deleteButton";
-            this.deleteButton.Size = new System.Drawing.Size(93, 39);
-            this.deleteButton.TabIndex = 8;
-            this.deleteButton.Text = "Usuń";
-            this.deleteButton.UseVisualStyleBackColor = true;
-            this.deleteButton.Click += new System.EventHandler(this.deleteButton_Click);
             // 
             // MainWindow
             // 
@@ -240,15 +240,15 @@
         private System.Windows.Forms.Button OpenButton;
         private System.Windows.Forms.Button SaveButton;
         private System.Windows.Forms.DataGridView passwordsDataGridView;
+        private System.Windows.Forms.Button add;
+        private System.Windows.Forms.Button deleteButton;
         private System.Windows.Forms.DataGridViewTextBoxColumn ID;
         private System.Windows.Forms.DataGridViewTextBoxColumn Name;
         private System.Windows.Forms.DataGridViewTextBoxColumn Login;
         private System.Windows.Forms.DataGridViewTextBoxColumn Email;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Password;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Password_Column;
         private System.Windows.Forms.DataGridViewTextBoxColumn hiddenPwd;
         private System.Windows.Forms.DataGridViewTextBoxColumn Notes;
-        private System.Windows.Forms.Button add;
-        private System.Windows.Forms.Button deleteButton;
     }
 }
 

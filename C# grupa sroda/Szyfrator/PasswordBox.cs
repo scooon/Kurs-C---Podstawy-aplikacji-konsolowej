@@ -12,6 +12,7 @@ namespace Szyfrator
 {
     public partial class PasswordBox : Form
     {
+        private static string pass = "";
         public PasswordBox()
         {
             InitializeComponent();
@@ -20,20 +21,13 @@ namespace Szyfrator
 
         private void loginButton_Click(object sender, EventArgs e)
         {
-            if (passwordTextBox.Text == "test")
-            {
-                Console.WriteLine("Zalogowano!");
-                new MainWindow().Show();
-                this.Hide();
-            }
-            else
-            {
-                DialogResult result = MessageBox.Show("Błędne hasło!", "Wpisane hasło jest nieprawidłowe!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                if(result == DialogResult.OK)
-                {
-                    this.Close();
-                }
-            }
+            pass = passwordTextBox.Text;
+            this.Close();
+        }
+
+        public static string getPassword()
+        {
+            return pass;
         }
 
         private void PasswordBox_Load(object sender, EventArgs e)

@@ -12,6 +12,7 @@ namespace Szyfrator
 {
     public partial class newPassword : Form
     {
+        private static string pass = "";
         public newPassword()
         {
             InitializeComponent();
@@ -48,6 +49,28 @@ namespace Szyfrator
             newPasswordTextbox.UseSystemPasswordChar = true;
             repeatNewPasswordTextbox.UseSystemPasswordChar = true;
             showPwd.Text = "Pokaż hasło";
+        }
+
+        private void setPwd_Click(object sender, EventArgs e)
+        {
+            if (newPasswordTextbox.Text == repeatNewPasswordTextbox.Text)
+            {
+                pass = newPasswordTextbox.Text;
+                this.Close();
+            }
+            else if(newPasswordTextbox.Text.Length < 6)
+            {
+                MessageBox.Show("Hasło jest za krótkie!", "Błąd ustawiania hasła!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
+            {
+                MessageBox.Show("Hasła różnią się od siebie!", "Błąd ustawiania hasła!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        public static string getPassword()
+        {
+            return pass;
         }
     }
 }

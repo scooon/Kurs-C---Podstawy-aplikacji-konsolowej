@@ -16,7 +16,7 @@ namespace Szyfrator
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new PasswordBox());
+            Application.Run(new MainWindow());
         }
     }
 }
