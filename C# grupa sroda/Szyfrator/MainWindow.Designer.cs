@@ -38,8 +38,6 @@
             this.OpenButton = new System.Windows.Forms.Button();
             this.SaveButton = new System.Windows.Forms.Button();
             this.passwordsDataGridView = new System.Windows.Forms.DataGridView();
-            this.add = new System.Windows.Forms.Button();
-            this.deleteButton = new System.Windows.Forms.Button();
             this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Name = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Login = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -47,6 +45,8 @@
             this.Password_Column = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.hiddenPwd = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Notes = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.add = new System.Windows.Forms.Button();
+            this.deleteButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.passwordsDataGridView)).BeginInit();
             this.SuspendLayout();
             // 
@@ -54,7 +54,7 @@
             // 
             this.title.AutoSize = true;
             this.title.Font = new System.Drawing.Font("Montserrat Medium", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.title.Location = new System.Drawing.Point(233, 9);
+            this.title.Location = new System.Drawing.Point(390, 9);
             this.title.Name = "title";
             this.title.Size = new System.Drawing.Size(134, 33);
             this.title.TabIndex = 0;
@@ -145,28 +145,6 @@
             this.passwordsDataGridView.CellMouseLeave += new System.Windows.Forms.DataGridViewCellEventHandler(this.passwordsDataGridView_CellMouseLeave);
             this.passwordsDataGridView.CellMouseUp += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.passwordsDataGridView_CellMouseUp);
             // 
-            // add
-            // 
-            this.add.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.add.Location = new System.Drawing.Point(29, 130);
-            this.add.Name = "add";
-            this.add.Size = new System.Drawing.Size(96, 39);
-            this.add.TabIndex = 7;
-            this.add.Text = "Dodaj";
-            this.add.UseVisualStyleBackColor = true;
-            this.add.Click += new System.EventHandler(this.add_Click);
-            // 
-            // deleteButton
-            // 
-            this.deleteButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.deleteButton.Location = new System.Drawing.Point(131, 130);
-            this.deleteButton.Name = "deleteButton";
-            this.deleteButton.Size = new System.Drawing.Size(93, 39);
-            this.deleteButton.TabIndex = 8;
-            this.deleteButton.Text = "Usuń";
-            this.deleteButton.UseVisualStyleBackColor = true;
-            this.deleteButton.Click += new System.EventHandler(this.deleteButton_Click);
-            // 
             // ID
             // 
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
@@ -206,6 +184,28 @@
             this.Notes.HeaderText = "Notatki";
             this.Notes.Name = "Notes";
             // 
+            // add
+            // 
+            this.add.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.add.Location = new System.Drawing.Point(29, 130);
+            this.add.Name = "add";
+            this.add.Size = new System.Drawing.Size(96, 39);
+            this.add.TabIndex = 7;
+            this.add.Text = "Dodaj";
+            this.add.UseVisualStyleBackColor = true;
+            this.add.Click += new System.EventHandler(this.add_Click);
+            // 
+            // deleteButton
+            // 
+            this.deleteButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.deleteButton.Location = new System.Drawing.Point(131, 130);
+            this.deleteButton.Name = "deleteButton";
+            this.deleteButton.Size = new System.Drawing.Size(93, 39);
+            this.deleteButton.TabIndex = 8;
+            this.deleteButton.Text = "Usuń";
+            this.deleteButton.UseVisualStyleBackColor = true;
+            this.deleteButton.Click += new System.EventHandler(this.deleteButton_Click);
+            // 
             // MainWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
@@ -222,11 +222,14 @@
             this.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::Szyfrator.Properties.Settings.Default, "Szyfrator", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.Font = new System.Drawing.Font("Montserrat Medium", 8.249999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.ForeColor = System.Drawing.Color.DarkOrange;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.Name = "MainWindow";
             this.Text = global::Szyfrator.Properties.Settings.Default.Szyfrator;
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.MainWindow_FormClosed);
+            this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.MainWindow_MouseDown);
+            this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.MainWindow_MouseMove);
+            this.MouseUp += new System.Windows.Forms.MouseEventHandler(this.MainWindow_MouseUp);
             ((System.ComponentModel.ISupportInitialize)(this.passwordsDataGridView)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

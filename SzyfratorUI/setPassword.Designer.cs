@@ -36,6 +36,8 @@
             this.RepeatNewPasswordTextBox = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
             this.AddPwd = new System.Windows.Forms.Button();
+            this.progressBar1 = new System.Windows.Forms.ProgressBar();
+            this.label4 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label1
@@ -58,6 +60,7 @@
             this.NewPasswordTextbox.Size = new System.Drawing.Size(190, 21);
             this.NewPasswordTextbox.TabIndex = 1;
             this.NewPasswordTextbox.UseSystemPasswordChar = true;
+            this.NewPasswordTextbox.TextChanged += new System.EventHandler(this.NewPasswordTextbox_TextChanged);
             // 
             // label2
             // 
@@ -91,7 +94,7 @@
             // button1
             // 
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Location = new System.Drawing.Point(84, 160);
+            this.button1.Location = new System.Drawing.Point(84, 200);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(190, 34);
             this.button1.TabIndex = 5;
@@ -104,7 +107,7 @@
             // AddPwd
             // 
             this.AddPwd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.AddPwd.Location = new System.Drawing.Point(84, 208);
+            this.AddPwd.Location = new System.Drawing.Point(84, 248);
             this.AddPwd.Name = "AddPwd";
             this.AddPwd.Size = new System.Drawing.Size(190, 34);
             this.AddPwd.TabIndex = 6;
@@ -112,13 +115,31 @@
             this.AddPwd.UseVisualStyleBackColor = false;
             this.AddPwd.Click += new System.EventHandler(this.AddPwd_Click);
             // 
+            // progressBar1
+            // 
+            this.progressBar1.Location = new System.Drawing.Point(84, 173);
+            this.progressBar1.Name = "progressBar1";
+            this.progressBar1.Size = new System.Drawing.Size(190, 10);
+            this.progressBar1.TabIndex = 7;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(81, 155);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(84, 15);
+            this.label4.TabIndex = 8;
+            this.label4.Text = "Długość hasła:";
+            // 
             // setPassword
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
-            this.ClientSize = new System.Drawing.Size(358, 280);
+            this.ClientSize = new System.Drawing.Size(358, 323);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.progressBar1);
             this.Controls.Add(this.AddPwd);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.label3);
@@ -147,5 +168,7 @@
         private System.Windows.Forms.TextBox RepeatNewPasswordTextBox;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button AddPwd;
+        private System.Windows.Forms.ProgressBar progressBar1;
+        private System.Windows.Forms.Label label4;
     }
 }

@@ -235,6 +235,9 @@
             this.Text = "Szyfrator";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Szyfrator_FormClosed);
             this.Load += new System.EventHandler(this.Form1_Load);
+            this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Szyfrator_MouseDown);
+            this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Szyfrator_MouseMove);
+            this.MouseUp += new System.Windows.Forms.MouseEventHandler(this.Szyfrator_MouseUp);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

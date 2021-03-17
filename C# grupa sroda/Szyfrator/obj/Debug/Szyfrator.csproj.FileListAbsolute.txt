@@ -25,3 +25,4 @@ C:\Users\Scooon\Documents\Kursy\C#\Kurs-CSharp-Podstawy-aplikacji-konsolowej\C# 
 C:\Users\Scooon\Documents\Kursy\C#\Kurs-CSharp-Podstawy-aplikacji-konsolowej\C# grupa sroda\Szyfrator\bin\Debug\Newtonsoft.Json.dll
 C:\Users\Scooon\Documents\Kursy\C#\Kurs-CSharp-Podstawy-aplikacji-konsolowej\C# grupa sroda\Szyfrator\bin\Debug\Newtonsoft.Json.xml
 C:\Users\Scooon\Documents\Kursy\C#\Kurs-CSharp-Podstawy-aplikacji-konsolowej\C# grupa sroda\Szyfrator\obj\Debug\Szyfrator.AddWindow.resources
+C:\Users\Scooon\Documents\Kursy\C#\Kurs-CSharp-Podstawy-aplikacji-konsolowej\C# grupa sroda\Szyfrator\obj\Debug\Szyfrator.newPassword.resources

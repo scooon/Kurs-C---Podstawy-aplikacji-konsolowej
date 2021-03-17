@@ -30,7 +30,8 @@ namespace Szyfrator
 
         int index = 0;
 
-
+        private bool mouseDown;
+        private Point lastLocation;
 
         public MainWindow()
         {
@@ -73,12 +74,16 @@ namespace Szyfrator
                         checkPwd.Show();
                         checkPwd.FormClosed += delegate
                         {
-                            if (PasswordBox.getPassword() == pass)
+                            if (Password.checkPassword(PasswordBox.getPassword(), pass))
                             {
                                 Password.setPassword(pass);
                                 passwords = JsonConvert.DeserializeObject<List<Password>>(json);
                                 PopulateDataGridView(passwords);
-                            } //else dopisać!!!
+                            }
+                            else
+                            {
+                                MessageBox.Show("Złe hasło!", "Złe hasło!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            }
                             
                         };
                         
@@ -97,25 +102,27 @@ namespace Szyfrator
 
         private void SaveButton_Click(object sender, EventArgs e)
         {
-
-            //byte[] byteArray = Encoding.UTF8.GetBytes(szyfruj(json));
-            string json = Password.getPassword() + "|password|" + getData();
-            byte[] byteArray = Encoding.UTF8.GetBytes(szyfruj(json));
-
-            Stream myStream;
-            SaveFileDialog saveFileDialog = new SaveFileDialog();
-
-            saveFileDialog.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
-            saveFileDialog.Filter = "Pliki Szyfratora (*.szyfrator)|*.szyfrator|Pliki tekstowe (*.txt)|*.txt|Wszystkie pliki (*.*)|*.*";
-            saveFileDialog.FilterIndex = 1;
-            saveFileDialog.RestoreDirectory = true;
-
-            if (saveFileDialog.ShowDialog() == DialogResult.OK)
+            if (Password.getPassword() != "")
             {
-                if ((myStream = saveFileDialog.OpenFile()) != null)
+                //byte[] byteArray = Encoding.UTF8.GetBytes(szyfruj(json));
+                string json = Password.getPassword() + "|password|" + getData();
+                byte[] byteArray = Encoding.UTF8.GetBytes(szyfruj(json));
+
+                Stream myStream;
+                SaveFileDialog saveFileDialog = new SaveFileDialog();
+
+                saveFileDialog.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+                saveFileDialog.Filter = "Pliki Szyfratora (*.szyfrator)|*.szyfrator|Pliki tekstowe (*.txt)|*.txt|Wszystkie pliki (*.*)|*.*";
+                saveFileDialog.FilterIndex = 1;
+                saveFileDialog.RestoreDirectory = true;
+
+                if (saveFileDialog.ShowDialog() == DialogResult.OK)
                 {
-                    myStream.Write(byteArray, 0, byteArray.Length);
-                    myStream.Close();
+                    if ((myStream = saveFileDialog.OpenFile()) != null)
+                    {
+                        myStream.Write(byteArray, 0, byteArray.Length);
+                        myStream.Close();
+                    }
                 }
             }
         }
@@ -314,7 +321,7 @@ namespace Szyfrator
                 newPwd.Show();
                 newPwd.FormClosed += delegate
                 {
-                    Password.setPassword(newPassword.getPassword());
+                    Password.setHash(newPassword.getPassword());
                     if(Password.getPassword() != "")
                     {
                         addItem();
@@ -350,6 +357,28 @@ namespace Szyfrator
                 this.passwordsDataGridView.Rows.RemoveAt(
                     this.passwordsDataGridView.SelectedRows[0].Index);
             }
+        }
+
+        private void MainWindow_MouseDown(object sender, MouseEventArgs e)
+        {
+            mouseDown = true;
+            lastLocation = e.Location;
+        }
+
+        private void MainWindow_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (mouseDown)
+            {
+                this.Location = new Point(
+                    (this.Location.X - lastLocation.X) + e.X, (this.Location.Y - lastLocation.Y) + e.Y);
+
+                this.Update();
+            }
+        }
+
+        private void MainWindow_MouseUp(object sender, MouseEventArgs e)
+        {
+            mouseDown = false;
         }
 
         string getData()

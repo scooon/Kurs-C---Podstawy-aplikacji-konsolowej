@@ -26,7 +26,8 @@ namespace SzyfratorUI
         private static string password = "";
 
 
-
+        private bool mouseDown;
+        private Point lastLocation;
 
         public Szyfrator()
         {
@@ -84,9 +85,9 @@ namespace SzyfratorUI
                             pass.FormClosed += delegate
                             {
 
-                                if (pass.getPassword() == password)
+                                if (Passwords.checkPassword(pass.getPassword(), password))
                                 {
-
+                                    Passwords.setPassword(password);
 
 
 
@@ -148,34 +149,41 @@ namespace SzyfratorUI
 
             try
             {
-
-                Stream myStream;
-
-
-                SaveFileDialog saveFileDialog1 = new SaveFileDialog();
-
-                saveFileDialog1.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.Desktop); ;
-                saveFileDialog1.Filter = "Pliki Szyfratora (*.szyfrator)|*.szyfrator|Pliki tekstowe (*.txt)|*.txt|Wszystkie pliki (*.*)|*.*";
-                saveFileDialog1.FilterIndex = 1;
-                saveFileDialog1.Title = "Szyfrator - Zapisz plik";
-                saveFileDialog1.RestoreDirectory = true;
-
-                byte[] buffer = Encoding.UTF8.GetBytes(Strings.Encrypt(getData(), key, iv));
-                //byte[] buffer = Encoding.UTF8.GetBytes(getData());
-
-                if (saveFileDialog1.ShowDialog() == DialogResult.OK)
+                if (Passwords.getPassword() != "")
                 {
-                    if ((myStream = saveFileDialog1.OpenFile()) != null)
+                    Stream myStream;
+
+
+                    SaveFileDialog saveFileDialog1 = new SaveFileDialog();
+
+                    saveFileDialog1.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.Desktop); ;
+                    saveFileDialog1.Filter = "Pliki Szyfratora (*.szyfrator)|*.szyfrator|Pliki tekstowe (*.txt)|*.txt|Wszystkie pliki (*.*)|*.*";
+                    saveFileDialog1.FilterIndex = 1;
+                    saveFileDialog1.Title = "Szyfrator - Zapisz plik";
+                    saveFileDialog1.RestoreDirectory = true;
+
+                    byte[] buffer = Encoding.UTF8.GetBytes(Strings.Encrypt(getData(), key, iv));
+                    //byte[] buffer = Encoding.UTF8.GetBytes(getData());
+
+                    if (saveFileDialog1.ShowDialog() == DialogResult.OK)
                     {
-                        myStream.Write(buffer, 0, buffer.Length);
-                        myStream.Close();
+                        if ((myStream = saveFileDialog1.OpenFile()) != null)
+                        {
+                            myStream.Write(buffer, 0, buffer.Length);
+                            myStream.Close();
+                        }
                     }
+                }
+                else
+                {
+                    MessageBox.Show("Najpierw dodaj hasła!", "Błąd zapisu", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
             catch
             {
                 MessageBox.Show("Problem z zapisem pliku!", "Błąd zapisu", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        
         }
 
         private void button3_Click(object sender, EventArgs e)
@@ -512,5 +520,26 @@ namespace SzyfratorUI
             return true;
         }
 
+        private void Szyfrator_MouseDown(object sender, MouseEventArgs e)
+        {
+            mouseDown = true;
+            lastLocation = e.Location;
+        }
+
+        private void Szyfrator_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (mouseDown)
+            {
+                this.Location = new Point(
+                    (this.Location.X - lastLocation.X) + e.X, (this.Location.Y - lastLocation.Y) + e.Y);
+
+                this.Update();
+            }
+        }
+
+        private void Szyfrator_MouseUp(object sender, MouseEventArgs e)
+        {
+            mouseDown = false;
+        }
     }
 }

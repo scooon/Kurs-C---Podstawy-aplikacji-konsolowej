@@ -48,7 +48,7 @@ namespace SzyfratorUI
                 {
                     if (NewPasswordTextbox.Text.Length > 7)
                     {
-                        if (Passwords.setPassword(NewPasswordTextbox.Text))
+                        if (Passwords.hashPassword(NewPasswordTextbox.Text))
                         {
                             this.Close();
                         }
@@ -66,6 +66,18 @@ namespace SzyfratorUI
             else
             {
                 MessageBox.Show("Podaj hasło!", "Niekompletne dane!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+
+        private void NewPasswordTextbox_TextChanged(object sender, EventArgs e)
+        {
+            if(NewPasswordTextbox.Text.Length <= 8)
+            {
+                progressBar1.Value = (NewPasswordTextbox.Text.Length * 100) / 8;
+            }
+            else
+            {
+                progressBar1.Value = 100;
             }
         }
     }
