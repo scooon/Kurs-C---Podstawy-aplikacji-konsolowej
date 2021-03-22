@@ -46,6 +46,7 @@
             this.Notatki = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.AddPwd = new System.Windows.Forms.Button();
             this.deletePwd = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -216,12 +217,28 @@
             this.deletePwd.UseVisualStyleBackColor = false;
             this.deletePwd.Click += new System.EventHandler(this.deletePwd_Click);
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Montserrat Medium", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.label1.ForeColor = System.Drawing.Color.DarkOrange;
+            this.label1.Location = new System.Drawing.Point(899, 9);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(22, 22);
+            this.label1.TabIndex = 12;
+            this.label1.Text = "X";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label1.Click += new System.EventHandler(this.label1_Click_1);
+            this.label1.MouseLeave += new System.EventHandler(this.label1_MouseLeave);
+            this.label1.MouseHover += new System.EventHandler(this.label1_MouseHover);
+            // 
             // Szyfrator
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
             this.ClientSize = new System.Drawing.Size(933, 519);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.deletePwd);
             this.Controls.Add(this.AddPwd);
             this.Controls.Add(this.dataGridView1);
@@ -258,6 +275,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Notatki;
         private System.Windows.Forms.Button AddPwd;
         private System.Windows.Forms.Button deletePwd;
+        private System.Windows.Forms.Label label1;
     }
 }
 

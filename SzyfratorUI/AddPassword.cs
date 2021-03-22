@@ -13,6 +13,9 @@ namespace SzyfratorUI
     public partial class AddPassword : Form
     {
         public Passwords item = new Passwords();
+
+        private bool mouseDown;
+        private Point lastLocation;
         public AddPassword()
         {
             InitializeComponent();
@@ -92,6 +95,45 @@ namespace SzyfratorUI
         {
             showPwd.Text = "Pokaż hasło";
             haslo_textbox.UseSystemPasswordChar = true;
+        }
+
+        private void AddPassword_MouseDown(object sender, MouseEventArgs e)
+        {
+            mouseDown = true;
+            lastLocation = e.Location;
+        }
+
+        private void AddPassword_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (mouseDown)
+            {
+                this.Location = new Point(
+                    (this.Location.X - lastLocation.X) + e.X, (this.Location.Y - lastLocation.Y) + e.Y);
+
+                this.Update();
+            }
+        }
+
+        private void AddPassword_MouseUp(object sender, MouseEventArgs e)
+        {
+            mouseDown = false;
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void label1_MouseHover(object sender, EventArgs e)
+        {
+            label1.ForeColor = Color.White;
+            label1.Cursor = Cursors.Hand;
+        }
+
+        private void label1_MouseLeave(object sender, EventArgs e)
+        {
+            label1.ForeColor = Color.DarkOrange;
+            label1.Cursor = Cursors.Arrow;
         }
     }
 }

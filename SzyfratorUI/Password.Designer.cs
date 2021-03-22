@@ -32,6 +32,7 @@
             this.login = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.PasswordBox = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // login
@@ -74,6 +75,21 @@
             this.PasswordBox.UseSystemPasswordChar = true;
             this.PasswordBox.TextChanged += new System.EventHandler(this.PasswordBox_TextChanged);
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Montserrat Medium", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.label2.ForeColor = System.Drawing.Color.DarkOrange;
+            this.label2.Location = new System.Drawing.Point(184, 9);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(22, 22);
+            this.label2.TabIndex = 13;
+            this.label2.Text = "X";
+            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label2.Click += new System.EventHandler(this.label2_Click);
+            this.label2.MouseLeave += new System.EventHandler(this.label2_MouseLeave);
+            this.label2.MouseHover += new System.EventHandler(this.label2_MouseHover);
+            // 
             // Password
             // 
             this.AcceptButton = this.login;
@@ -81,6 +97,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
             this.ClientSize = new System.Drawing.Size(218, 113);
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.PasswordBox);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.login);
@@ -91,6 +108,9 @@
             this.Name = "Password";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Logowanie";
+            this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Password_MouseDown);
+            this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Password_MouseMove);
+            this.MouseUp += new System.Windows.Forms.MouseEventHandler(this.Password_MouseUp);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -101,5 +121,6 @@
         private System.Windows.Forms.Button login;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox PasswordBox;
+        private System.Windows.Forms.Label label2;
     }
 }

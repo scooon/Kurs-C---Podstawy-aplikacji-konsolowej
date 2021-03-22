@@ -7,7 +7,7 @@
     <ProjectGuid>{00EE7458-53D1-4815-BC94-E8FDBAC0C578}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <RootNamespace>SzyfratorUI</RootNamespace>
-    <AssemblyName>SzyfratorUI</AssemblyName>
+    <AssemblyName>Szyfrator</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>

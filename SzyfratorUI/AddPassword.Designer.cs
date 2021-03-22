@@ -41,6 +41,7 @@
             this.email = new System.Windows.Forms.Label();
             this.notatki_textbox = new System.Windows.Forms.TextBox();
             this.notatki = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // AddPwd
@@ -177,12 +178,28 @@
             this.notatki.TabIndex = 10;
             this.notatki.Text = "Notatki:";
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Montserrat Medium", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.label1.ForeColor = System.Drawing.Color.DarkOrange;
+            this.label1.Location = new System.Drawing.Point(318, 9);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(22, 22);
+            this.label1.TabIndex = 13;
+            this.label1.Text = "X";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label1.Click += new System.EventHandler(this.label1_Click);
+            this.label1.MouseLeave += new System.EventHandler(this.label1_MouseLeave);
+            this.label1.MouseHover += new System.EventHandler(this.label1_MouseHover);
+            // 
             // AddPassword
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
             this.ClientSize = new System.Drawing.Size(352, 417);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.notatki_textbox);
             this.Controls.Add(this.notatki);
             this.Controls.Add(this.email_textbox);
@@ -200,6 +217,9 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "AddPassword";
             this.Text = "AddPassword";
+            this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.AddPassword_MouseDown);
+            this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.AddPassword_MouseMove);
+            this.MouseUp += new System.Windows.Forms.MouseEventHandler(this.AddPassword_MouseUp);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -219,5 +239,6 @@
         private System.Windows.Forms.Label email;
         private System.Windows.Forms.TextBox notatki_textbox;
         private System.Windows.Forms.Label notatki;
+        private System.Windows.Forms.Label label1;
     }
 }

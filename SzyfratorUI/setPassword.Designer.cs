@@ -38,6 +38,7 @@
             this.AddPwd = new System.Windows.Forms.Button();
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.label4 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label1
@@ -131,6 +132,21 @@
             this.label4.TabIndex = 8;
             this.label4.Text = "Długość hasła:";
             // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Montserrat Medium", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.label5.ForeColor = System.Drawing.Color.DarkOrange;
+            this.label5.Location = new System.Drawing.Point(324, 9);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(22, 22);
+            this.label5.TabIndex = 13;
+            this.label5.Text = "X";
+            this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label5.Click += new System.EventHandler(this.label5_Click);
+            this.label5.MouseLeave += new System.EventHandler(this.label5_MouseLeave);
+            this.label5.MouseHover += new System.EventHandler(this.label5_MouseHover);
+            // 
             // setPassword
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -138,6 +154,7 @@
             this.AutoSize = true;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
             this.ClientSize = new System.Drawing.Size(358, 323);
+            this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.progressBar1);
             this.Controls.Add(this.AddPwd);
@@ -154,6 +171,9 @@
             this.Name = "setPassword";
             this.ShowInTaskbar = false;
             this.Text = "setPassword";
+            this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.setPassword_MouseDown);
+            this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.setPassword_MouseMove);
+            this.MouseUp += new System.Windows.Forms.MouseEventHandler(this.setPassword_MouseUp);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -170,5 +190,6 @@
         private System.Windows.Forms.Button AddPwd;
         private System.Windows.Forms.ProgressBar progressBar1;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label5;
     }
 }

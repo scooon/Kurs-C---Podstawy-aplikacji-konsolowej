@@ -541,5 +541,22 @@ namespace SzyfratorUI
         {
             mouseDown = false;
         }
+
+        private void label1_Click_1(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void label1_MouseHover(object sender, EventArgs e)
+        {
+            label1.ForeColor = Color.White;
+            label1.Cursor = Cursors.Hand;
+        }
+
+        private void label1_MouseLeave(object sender, EventArgs e)
+        {
+            label1.ForeColor = Color.DarkOrange;
+            label1.Cursor = Cursors.Arrow;
+        }
     }
 }
