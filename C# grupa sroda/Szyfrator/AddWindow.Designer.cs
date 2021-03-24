@@ -41,7 +41,7 @@
             this.ShowPwd = new System.Windows.Forms.Button();
             this.NotesTextBox = new System.Windows.Forms.TextBox();
             this.notes = new System.Windows.Forms.Label();
-            this.closeButton = new System.Windows.Forms.Button();
+            this.CloseButton = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // Addbutton
@@ -177,21 +177,21 @@
             this.notes.TabIndex = 10;
             this.notes.Text = "Notatki:";
             // 
-            // closeButton
+            // CloseButton
             // 
-            this.closeButton.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.closeButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.closeButton.ForeColor = System.Drawing.Color.DarkOrange;
-            this.closeButton.Location = new System.Drawing.Point(347, 9);
-            this.closeButton.Margin = new System.Windows.Forms.Padding(0);
-            this.closeButton.Name = "closeButton";
-            this.closeButton.Size = new System.Drawing.Size(34, 25);
-            this.closeButton.TabIndex = 12;
-            this.closeButton.Text = "X";
-            this.closeButton.UseVisualStyleBackColor = false;
-            this.closeButton.Click += new System.EventHandler(this.closeButton_Click);
+            this.CloseButton.AutoSize = true;
+            this.CloseButton.Font = new System.Drawing.Font("Montserrat Medium", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.CloseButton.ForeColor = System.Drawing.Color.DarkOrange;
+            this.CloseButton.Location = new System.Drawing.Point(354, 3);
+            this.CloseButton.Name = "CloseButton";
+            this.CloseButton.Padding = new System.Windows.Forms.Padding(5);
+            this.CloseButton.Size = new System.Drawing.Size(32, 32);
+            this.CloseButton.TabIndex = 12;
+            this.CloseButton.Text = "X";
+            this.CloseButton.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.CloseButton.Click += new System.EventHandler(this.CloseButton_Click);
+            this.CloseButton.MouseLeave += new System.EventHandler(this.CloseButton_MouseLeave);
+            this.CloseButton.MouseHover += new System.EventHandler(this.CloseButton_MouseHover);
             // 
             // AddWindow
             // 
@@ -200,7 +200,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
             this.ClientSize = new System.Drawing.Size(390, 418);
-            this.Controls.Add(this.closeButton);
+            this.Controls.Add(this.CloseButton);
             this.Controls.Add(this.NotesTextBox);
             this.Controls.Add(this.notes);
             this.Controls.Add(this.ShowPwd);
@@ -219,6 +219,9 @@
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "AddWindow";
             this.Text = "AddWindow";
+            this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.AddWindow_MouseDown);
+            this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.AddWindow_MouseMove);
+            this.MouseUp += new System.Windows.Forms.MouseEventHandler(this.AddWindow_MouseUp);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -238,6 +241,6 @@
         private System.Windows.Forms.Button ShowPwd;
         private System.Windows.Forms.TextBox NotesTextBox;
         private System.Windows.Forms.Label notes;
-        private System.Windows.Forms.Button closeButton;
+        private System.Windows.Forms.Label CloseButton;
     }
 }

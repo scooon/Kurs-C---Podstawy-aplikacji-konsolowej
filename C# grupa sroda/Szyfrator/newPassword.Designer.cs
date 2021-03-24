@@ -38,6 +38,7 @@
             this.setPwd = new System.Windows.Forms.Button();
             this.newPasswordTextbox = new System.Windows.Forms.TextBox();
             this.repeatNewPasswordTextbox = new System.Windows.Forms.TextBox();
+            this.CloseButton = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label1
@@ -133,12 +134,28 @@
             this.repeatNewPasswordTextbox.TabIndex = 8;
             this.repeatNewPasswordTextbox.UseSystemPasswordChar = true;
             // 
+            // CloseButton
+            // 
+            this.CloseButton.AutoSize = true;
+            this.CloseButton.Font = new System.Drawing.Font("Montserrat Medium", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.CloseButton.Location = new System.Drawing.Point(364, 3);
+            this.CloseButton.Name = "CloseButton";
+            this.CloseButton.Padding = new System.Windows.Forms.Padding(5);
+            this.CloseButton.Size = new System.Drawing.Size(32, 32);
+            this.CloseButton.TabIndex = 10;
+            this.CloseButton.Text = "X";
+            this.CloseButton.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.CloseButton.Click += new System.EventHandler(this.CloseButton_Click);
+            this.CloseButton.MouseLeave += new System.EventHandler(this.CloseButton_MouseLeave);
+            this.CloseButton.MouseHover += new System.EventHandler(this.CloseButton_MouseHover);
+            // 
             // newPassword
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 21F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
             this.ClientSize = new System.Drawing.Size(399, 368);
+            this.Controls.Add(this.CloseButton);
             this.Controls.Add(this.repeatNewPasswordTextbox);
             this.Controls.Add(this.newPasswordTextbox);
             this.Controls.Add(this.setPwd);
@@ -156,6 +173,9 @@
             this.Name = "newPassword";
             this.ShowInTaskbar = false;
             this.Text = "newPassword";
+            this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.newPassword_MouseDown);
+            this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.newPassword_MouseMove);
+            this.MouseUp += new System.Windows.Forms.MouseEventHandler(this.newPassword_MouseUp);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -172,5 +192,6 @@
         private System.Windows.Forms.Button setPwd;
         private System.Windows.Forms.TextBox newPasswordTextbox;
         private System.Windows.Forms.TextBox repeatNewPasswordTextbox;
+        private System.Windows.Forms.Label CloseButton;
     }
 }

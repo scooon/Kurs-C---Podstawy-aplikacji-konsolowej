@@ -31,16 +31,17 @@
             this.passwordLabel = new System.Windows.Forms.Label();
             this.passwordTextBox = new System.Windows.Forms.TextBox();
             this.loginButton = new System.Windows.Forms.Button();
+            this.CloseButton = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // passwordLabel
             // 
             this.passwordLabel.AutoSize = true;
-            this.passwordLabel.Location = new System.Drawing.Point(101, 28);
+            this.passwordLabel.Location = new System.Drawing.Point(128, 32);
             this.passwordLabel.Name = "passwordLabel";
-            this.passwordLabel.Size = new System.Drawing.Size(151, 18);
+            this.passwordLabel.Size = new System.Drawing.Size(101, 18);
             this.passwordLabel.TabIndex = 0;
-            this.passwordLabel.Text = "Witaj! Podaj hasło:";
+            this.passwordLabel.Text = "Podaj hasło:";
             // 
             // passwordTextBox
             // 
@@ -68,6 +69,21 @@
             this.loginButton.UseVisualStyleBackColor = true;
             this.loginButton.Click += new System.EventHandler(this.loginButton_Click);
             // 
+            // CloseButton
+            // 
+            this.CloseButton.AutoSize = true;
+            this.CloseButton.Font = new System.Drawing.Font("Montserrat Medium", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.CloseButton.Location = new System.Drawing.Point(325, 3);
+            this.CloseButton.Name = "CloseButton";
+            this.CloseButton.Padding = new System.Windows.Forms.Padding(5);
+            this.CloseButton.Size = new System.Drawing.Size(32, 32);
+            this.CloseButton.TabIndex = 10;
+            this.CloseButton.Text = "X";
+            this.CloseButton.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.CloseButton.Click += new System.EventHandler(this.CloseButton_Click);
+            this.CloseButton.MouseLeave += new System.EventHandler(this.CloseButton_MouseLeave);
+            this.CloseButton.MouseHover += new System.EventHandler(this.CloseButton_MouseHover);
+            // 
             // PasswordBox
             // 
             this.AcceptButton = this.loginButton;
@@ -75,6 +91,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
             this.ClientSize = new System.Drawing.Size(360, 163);
+            this.Controls.Add(this.CloseButton);
             this.Controls.Add(this.loginButton);
             this.Controls.Add(this.passwordTextBox);
             this.Controls.Add(this.passwordLabel);
@@ -85,6 +102,9 @@
             this.Name = "PasswordBox";
             this.Text = "PasswordBox";
             this.Load += new System.EventHandler(this.PasswordBox_Load);
+            this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.PasswordBox_MouseDown);
+            this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.PasswordBox_MouseMove);
+            this.MouseUp += new System.Windows.Forms.MouseEventHandler(this.PasswordBox_MouseUp);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -95,5 +115,6 @@
         private System.Windows.Forms.Label passwordLabel;
         private System.Windows.Forms.TextBox passwordTextBox;
         private System.Windows.Forms.Button loginButton;
+        private System.Windows.Forms.Label CloseButton;
     }
 }

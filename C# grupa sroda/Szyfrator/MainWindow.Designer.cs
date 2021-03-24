@@ -34,7 +34,6 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainWindow));
             this.title = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
             this.OpenButton = new System.Windows.Forms.Button();
             this.SaveButton = new System.Windows.Forms.Button();
             this.passwordsDataGridView = new System.Windows.Forms.DataGridView();
@@ -47,34 +46,25 @@
             this.Notes = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.add = new System.Windows.Forms.Button();
             this.deleteButton = new System.Windows.Forms.Button();
+            this.CloseButton = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.passwordsDataGridView)).BeginInit();
             this.SuspendLayout();
             // 
             // title
             // 
             this.title.AutoSize = true;
-            this.title.Font = new System.Drawing.Font("Montserrat Medium", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.title.Location = new System.Drawing.Point(390, 9);
+            this.title.Font = new System.Drawing.Font("Montserrat", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.title.Location = new System.Drawing.Point(416, 9);
             this.title.Name = "title";
-            this.title.Size = new System.Drawing.Size(134, 33);
+            this.title.Size = new System.Drawing.Size(124, 33);
             this.title.TabIndex = 0;
             this.title.Text = "Szyfrator";
             this.title.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(26, 65);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(128, 15);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "Operacje na pliku:";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
-            // 
             // OpenButton
             // 
             this.OpenButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.OpenButton.Location = new System.Drawing.Point(29, 85);
+            this.OpenButton.Location = new System.Drawing.Point(29, 65);
             this.OpenButton.Name = "OpenButton";
             this.OpenButton.Size = new System.Drawing.Size(96, 39);
             this.OpenButton.TabIndex = 2;
@@ -85,9 +75,9 @@
             // SaveButton
             // 
             this.SaveButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.SaveButton.Location = new System.Drawing.Point(131, 85);
+            this.SaveButton.Location = new System.Drawing.Point(29, 155);
             this.SaveButton.Name = "SaveButton";
-            this.SaveButton.Size = new System.Drawing.Size(93, 39);
+            this.SaveButton.Size = new System.Drawing.Size(96, 39);
             this.SaveButton.TabIndex = 3;
             this.SaveButton.Text = "Zapisz";
             this.SaveButton.UseVisualStyleBackColor = true;
@@ -109,6 +99,7 @@
             dataGridViewCellStyle2.BackColor = System.Drawing.Color.DarkOrange;
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Montserrat Medium", 8.249999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             dataGridViewCellStyle2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
+            dataGridViewCellStyle2.Padding = new System.Windows.Forms.Padding(15, 0, 0, 0);
             dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.DarkOrange;
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
@@ -126,19 +117,19 @@
             dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
             dataGridViewCellStyle4.Font = new System.Drawing.Font("Montserrat Medium", 8.249999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             dataGridViewCellStyle4.ForeColor = System.Drawing.Color.DarkOrange;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(90)))), ((int)(((byte)(90)))));
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(60)))), ((int)(((byte)(60)))));
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.DarkOrange;
             dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.passwordsDataGridView.DefaultCellStyle = dataGridViewCellStyle4;
             this.passwordsDataGridView.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.passwordsDataGridView.EnableHeadersVisualStyles = false;
             this.passwordsDataGridView.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(60)))), ((int)(((byte)(60)))));
-            this.passwordsDataGridView.Location = new System.Drawing.Point(262, 65);
+            this.passwordsDataGridView.Location = new System.Drawing.Point(163, 65);
             this.passwordsDataGridView.Name = "passwordsDataGridView";
             this.passwordsDataGridView.RowHeadersVisible = false;
             this.passwordsDataGridView.RowTemplate.DefaultCellStyle.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             this.passwordsDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.passwordsDataGridView.Size = new System.Drawing.Size(655, 326);
+            this.passwordsDataGridView.Size = new System.Drawing.Size(785, 326);
             this.passwordsDataGridView.TabIndex = 6;
             this.passwordsDataGridView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.passwordsDataGridView_CellClick);
             this.passwordsDataGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.passwordsDataGridView_CellContentClick);
@@ -155,7 +146,7 @@
             // 
             // Name
             // 
-            this.Name.HeaderText = "Nazwa usługi";
+            this.Name.HeaderText = "Nazwa";
             this.Name.Name = "Name";
             // 
             // Login
@@ -187,7 +178,7 @@
             // add
             // 
             this.add.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.add.Location = new System.Drawing.Point(29, 130);
+            this.add.Location = new System.Drawing.Point(29, 110);
             this.add.Name = "add";
             this.add.Size = new System.Drawing.Size(96, 39);
             this.add.TabIndex = 7;
@@ -198,26 +189,41 @@
             // deleteButton
             // 
             this.deleteButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.deleteButton.Location = new System.Drawing.Point(131, 130);
+            this.deleteButton.Location = new System.Drawing.Point(29, 200);
             this.deleteButton.Name = "deleteButton";
-            this.deleteButton.Size = new System.Drawing.Size(93, 39);
+            this.deleteButton.Size = new System.Drawing.Size(96, 39);
             this.deleteButton.TabIndex = 8;
             this.deleteButton.Text = "Usuń";
             this.deleteButton.UseVisualStyleBackColor = true;
             this.deleteButton.Click += new System.EventHandler(this.deleteButton_Click);
+            // 
+            // CloseButton
+            // 
+            this.CloseButton.AutoSize = true;
+            this.CloseButton.Font = new System.Drawing.Font("Montserrat Medium", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.CloseButton.Location = new System.Drawing.Point(965, 3);
+            this.CloseButton.Name = "CloseButton";
+            this.CloseButton.Padding = new System.Windows.Forms.Padding(5);
+            this.CloseButton.Size = new System.Drawing.Size(32, 32);
+            this.CloseButton.TabIndex = 9;
+            this.CloseButton.Text = "X";
+            this.CloseButton.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.CloseButton.Click += new System.EventHandler(this.CloseButton_Click);
+            this.CloseButton.MouseLeave += new System.EventHandler(this.CloseButton_MouseLeave);
+            this.CloseButton.MouseHover += new System.EventHandler(this.CloseButton_MouseHover);
             // 
             // MainWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
-            this.ClientSize = new System.Drawing.Size(929, 519);
+            this.ClientSize = new System.Drawing.Size(1000, 519);
+            this.Controls.Add(this.CloseButton);
             this.Controls.Add(this.deleteButton);
             this.Controls.Add(this.add);
             this.Controls.Add(this.passwordsDataGridView);
             this.Controls.Add(this.SaveButton);
             this.Controls.Add(this.OpenButton);
-            this.Controls.Add(this.label1);
             this.Controls.Add(this.title);
             this.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::Szyfrator.Properties.Settings.Default, "Szyfrator", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.Font = new System.Drawing.Font("Montserrat Medium", 8.249999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
@@ -239,7 +245,6 @@
         #endregion
 
         private System.Windows.Forms.Label title;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button OpenButton;
         private System.Windows.Forms.Button SaveButton;
         private System.Windows.Forms.DataGridView passwordsDataGridView;
@@ -252,6 +257,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Password_Column;
         private System.Windows.Forms.DataGridViewTextBoxColumn hiddenPwd;
         private System.Windows.Forms.DataGridViewTextBoxColumn Notes;
+        private System.Windows.Forms.Label CloseButton;
     }
 }
 

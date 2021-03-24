@@ -13,6 +13,8 @@ namespace Szyfrator
     public partial class newPassword : Form
     {
         private static string pass = "";
+        private bool mouseDown;
+        private Point lastLocation;
         public newPassword()
         {
             InitializeComponent();
@@ -71,6 +73,45 @@ namespace Szyfrator
         public static string getPassword()
         {
             return pass;
+        }
+
+        private void CloseButton_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void CloseButton_MouseHover(object sender, EventArgs e)
+        {
+            CloseButton.ForeColor = Color.White;
+            CloseButton.Cursor = Cursors.Hand;
+        }
+
+        private void CloseButton_MouseLeave(object sender, EventArgs e)
+        {
+            CloseButton.ForeColor = Color.DarkOrange;
+            CloseButton.Cursor = Cursors.Arrow;
+        }
+
+        private void newPassword_MouseDown(object sender, MouseEventArgs e)
+        {
+            mouseDown = true;
+            lastLocation = e.Location;
+        }
+
+        private void newPassword_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (mouseDown)
+            {
+                this.Location = new Point(
+                    (this.Location.X - lastLocation.X) + e.X, (this.Location.Y - lastLocation.Y) + e.Y);
+
+                this.Update();
+            }
+        }
+
+        private void newPassword_MouseUp(object sender, MouseEventArgs e)
+        {
+            mouseDown = false;
         }
     }
 }

@@ -13,7 +13,9 @@ namespace Szyfrator
     public partial class AddWindow : Form
     {
         public Password newItem;
-        
+        private bool mouseDown;
+        private Point lastLocation;
+
         public AddWindow()
         {
             InitializeComponent();
@@ -84,9 +86,43 @@ namespace Szyfrator
             
         }
 
-        private void closeButton_Click(object sender, EventArgs e)
+        private void CloseButton_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void CloseButton_MouseHover(object sender, EventArgs e)
+        {
+            CloseButton.ForeColor = Color.White;
+            CloseButton.Cursor = Cursors.Hand;
+        }
+
+        private void CloseButton_MouseLeave(object sender, EventArgs e)
+        {
+            CloseButton.ForeColor = Color.DarkOrange;
+            CloseButton.Cursor = Cursors.Arrow;
+        }
+
+        private void AddWindow_MouseDown(object sender, MouseEventArgs e)
+        {
+            mouseDown = true;
+            lastLocation = e.Location;
+        }
+
+        private void AddWindow_MouseUp(object sender, MouseEventArgs e)
+        {
+            mouseDown = false;
+        }
+
+        private void AddWindow_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (mouseDown)
+            {
+                this.Location = new Point(
+                    (this.Location.X - lastLocation.X) + e.X, (this.Location.Y - lastLocation.Y) + e.Y);
+
+                this.Update();
+            }
         }
     }
 }

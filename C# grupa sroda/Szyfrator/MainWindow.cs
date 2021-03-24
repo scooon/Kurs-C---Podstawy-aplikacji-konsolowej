@@ -66,27 +66,34 @@ namespace Szyfrator
                         content = reader.ReadToEnd();
                     }
                     string input = deszyfruj(content);
-                    string pass = input.Substring(0, input.IndexOf("|password|"));
-                    string json = input.Substring(input.IndexOf("|password|") + 10);
-                    if (pass.Length > 0)
+                    try
                     {
-                        PasswordBox checkPwd = new PasswordBox();
-                        checkPwd.Show();
-                        checkPwd.FormClosed += delegate
+                        string pass = input.Substring(0, input.IndexOf("|password|"));
+                        string json = input.Substring(input.IndexOf("|password|") + 10);
+                        if (pass.Length > 0)
                         {
-                            if (Password.checkPassword(PasswordBox.getPassword(), pass))
+                            PasswordBox checkPwd = new PasswordBox();
+                            checkPwd.Show();
+                            checkPwd.FormClosed += delegate
                             {
-                                Password.setPassword(pass);
-                                passwords = JsonConvert.DeserializeObject<List<Password>>(json);
-                                PopulateDataGridView(passwords);
-                            }
-                            else
-                            {
-                                MessageBox.Show("Złe hasło!", "Złe hasło!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            }
-                            
-                        };
-                        
+                                if (Password.checkPassword(PasswordBox.getPassword(), pass))
+                                {
+                                    Password.setPassword(pass);
+                                    passwords = JsonConvert.DeserializeObject<List<Password>>(json);
+                                    PopulateDataGridView(passwords);
+                                }
+                                else
+                                {
+                                    MessageBox.Show("Złe hasło!", "Złe hasło!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                }
+
+                            };
+
+                        }
+                    }
+                    catch (Exception)
+                    {
+                        //MessageBox.Show("Błąd! To nie jest plik programu Szyfrator", "Szyfrator - Błąd!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
             }
@@ -124,6 +131,10 @@ namespace Szyfrator
                         myStream.Close();
                     }
                 }
+            }
+            else
+            {
+                MessageBox.Show("Nie można zapisać pustego pliku", "Błąd zapisu!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -321,9 +332,11 @@ namespace Szyfrator
                 newPwd.Show();
                 newPwd.FormClosed += delegate
                 {
-                    Password.setHash(newPassword.getPassword());
-                    if(Password.getPassword() != "")
+                    
+                 
+                    if (newPassword.getPassword() != "")
                     {
+                        Password.setHash(newPassword.getPassword());
                         addItem();
                     }
                 };
@@ -354,8 +367,18 @@ namespace Szyfrator
         {
             if (this.passwordsDataGridView.SelectedRows.Count > 0)
             {
-                this.passwordsDataGridView.Rows.RemoveAt(
-                    this.passwordsDataGridView.SelectedRows[0].Index);
+                DialogResult zapytanie = MessageBox.Show("Czy na pewno chcesz usunąć zaznaczone wiersze?", "Czy na pewno chcesz usunąć?", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                if (zapytanie == DialogResult.Yes)
+                {
+
+                    this.passwordsDataGridView.Rows.RemoveAt(
+                        this.passwordsDataGridView.SelectedRows[0].Index);
+
+                }
+            }
+            else
+            {
+                MessageBox.Show("Zaznacz hasła, które chcesz usunąć!", "Błąd usuwania!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -379,6 +402,23 @@ namespace Szyfrator
         private void MainWindow_MouseUp(object sender, MouseEventArgs e)
         {
             mouseDown = false;
+        }
+
+        private void CloseButton_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void CloseButton_MouseHover(object sender, EventArgs e)
+        {
+            CloseButton.ForeColor = Color.White;
+            CloseButton.Cursor = Cursors.Hand;
+        }
+
+        private void CloseButton_MouseLeave(object sender, EventArgs e)
+        {
+            CloseButton.ForeColor = Color.DarkOrange;
+            CloseButton.Cursor = Cursors.Arrow;
         }
 
         string getData()
